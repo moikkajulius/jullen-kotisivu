@@ -7,188 +7,119 @@
     <style>
         :root {
             --bg: #f0f0f0;
-            --accent-pink: #FF5D8F;
-            --accent-green: #8FFF5D;
-            --accent-blue: #5D8FFF;
+            --pink: #FF5D8F; --green: #8FFF5D; --blue: #5D8FFF;
             --border: 3px solid #000;
-            --shadow: 6px 6px 0px 0px #000;
-            --shadow-hover: 2px 2px 0px 0px #000;
-            --font-mono: 'Courier New', Courier, monospace;
+            --shadow: 6px 6px 0 0 #000;
+            --font-mono: 'Courier New', monospace;
             --font-sans: Arial, Helvetica, sans-serif;
+            --ease: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg);
-            color: #000;
+            background: var(--bg);
             font-family: var(--font-mono);
             overflow-x: hidden;
             min-height: 100vh;
-            /* FIX 1: Relative positioning ensures the absolute marquee stays at the bottom of the CONTENT, not the screen */
-            position: relative; 
-            padding-bottom: 60px; /* Space for marquee */
+            display: flex; flex-direction: column;
         }
 
-        /* --- SHARED UTILITIES --- */
-        .brutal-box {
+        /* --- UTILITIES --- */
+        .brutal {
             background: white;
             border: var(--border);
             box-shadow: var(--shadow);
             z-index: 10;
         }
-        
-        .flex-center { display: flex; align-items: center; justify-content: center; }
+
+        .interactive { transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s; }
+        .interactive:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 #000; }
+        .interactive:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 #000; }
 
         /* --- BACKGROUND --- */
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        #bg-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 
         /* --- NAVIGATION --- */
-        /* FIX 2: Added .brutal-box to selector to increase specificity so z-index 999 applies */
-        nav.brutal-box {
-            position: fixed;
-            top: 2rem; left: 50%;
-            transform: translateX(-50%);
-            padding: 1rem 2rem;
-            gap: 1.5rem;
-            z-index: 999; /* Ensures it stays on top of everything */
-            display: flex;
+        nav.brutal {
+            position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
+            padding: 1rem 2rem; gap: 1.5rem;
+            display: flex; z-index: 9999;
         }
 
-        .nav-btn {
-            text-decoration: none;
-            color: black;
-            font-weight: 800;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            padding: 0.3rem 0.6rem;
-            border: 3px solid transparent;
-            transition: 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+        .nav-link {
+            text-decoration: none; color: black; font-weight: 800; font-size: 1.5rem;
+            text-transform: uppercase; padding: 0.3rem 0.6rem; border: 3px solid transparent;
+            transition: all 0.2s var(--ease);
         }
+        .nav-link:hover { background-color: var(--blue); border-color: black; box-shadow: 4px 4px 0 black; transform: translate(-2px, -2px); }
 
-        .nav-btn:hover {
-            background-color: var(--accent-blue);
-            border-color: black;
-            box-shadow: 4px 4px 0px black;
-            transform: translate(-2px, -2px);
-        }
-
-        /* --- MAIN LAYOUT --- */
+        /* --- MAIN --- */
         main {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 100vh;
-            padding: 9rem 3rem 4rem;
-            align-items: center;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+            max-width: 1200px; margin: auto; padding: 9rem 2rem 5rem;
+            align-items: center; justify-items: center; width: 100%; flex: 1;
         }
 
-        /* --- TYPOGRAPHY & BUTTONS --- */
-        .content-wrapper { display: flex; flex-direction: column; align-items: flex-start; z-index: 10; }
+        .hero-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; margin-left: 2rem; }
 
         h1 {
-            font-family: var(--font-sans);
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            padding: 2.5rem;
+            padding: 2.5rem; 
             transform: rotate(-2deg);
             display: flex; flex-direction: column;
+            text-transform: uppercase; font-family: var(--font-sans); line-height: 1.1;
+            width: fit-content; 
         }
-        
-        .title-big { font-size: 6rem; font-weight: 800; }
-        .title-small { font-size: 3rem; font-weight: 600; margin-top: 0.5rem; }
+        h1 span:first-child { font-size: 6rem; font-weight: 800; }
+        h1 span:last-child { font-size: 3rem; font-weight: 600; margin-top: 0.5rem; }
 
-        .cta-button {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: var(--accent-pink);
-            color: black;
-            text-decoration: none;
-            padding: 2rem 3rem;
-            transition: all 0.15s ease-in-out;
+        .cta-btn {
+            text-decoration: none; color: black; background: var(--pink);
+            padding: 2rem 3rem; display: inline-flex; flex-direction: column; align-items: center;
+            /* FIX: Push button to the right to sit closer to the image */
+            margin-left: 3rem; 
         }
+        .cta-btn:hover { background: var(--green); }
+        .cta-btn strong { font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: 1px; font-family: var(--font-sans); }
+        .cta-btn span { font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; }
 
-        .btn-text-top { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 1px; font-family: --font-main, sans-serif; }
-        .btn-text-email { font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; }
-
-        .cta-button:hover { transform: translate(4px, 4px); box-shadow: var(--shadow-hover); background-color: var(--accent-green); }
-        .cta-button:active { transform: translate(6px, 6px); box-shadow: none; }
-
-        /* --- IMAGE SECTION --- */
-        .image-wrapper { position: relative; width: 100%; max-width: 380px; justify-self: center; z-index: 10; }
-
-        .image-container {
-            width: 100%;
-            aspect-ratio: 1 / 1.2;
-            overflow: hidden;
-            position: relative;
+        /* --- IMAGE --- */
+        .img-wrapper { position: relative; width: 100%; max-width: 380px; }
+        .img-frame {
+            aspect-ratio: 1 / 1.2; overflow: hidden; position: relative;
+            background: white; border: var(--border); box-shadow: 12px 12px 0 0 #000;
             transition: transform 0.3s ease;
-            box-shadow: 12px 12px 0px 0px black;
-            border: var(--border);
-            background: white;
-            z-index: 1;
         }
-
-        .image-container:hover { transform: scale(1.02) rotate(1deg); }
-        .image-container img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
+        .img-frame:hover { transform: scale(1.02) rotate(1deg); }
+        .img-frame img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
 
         .badge {
-            position: absolute;
-            top: -20px; right: -20px;
-            background: var(--accent-green);
-            border: var(--border);
-            padding: 0.5rem 1rem;
-            font-weight: bold;
-            font-family: var(--font-sans);
-            transform: rotate(15deg);
-            box-shadow: 4px 4px 0px black;
-            z-index: 5;
+            position: absolute; top: -20px; right: -20px;
+            background: var(--green); border: var(--border);
+            padding: 0.5rem 1rem; font-weight: bold; font-family: var(--font-sans);
+            transform: rotate(15deg); box-shadow: 4px 4px 0 #000; z-index: 20;
         }
 
         /* --- MARQUEE --- */
-        .marquee-container {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            background: var(--accent-green);
-            border-top: var(--border);
-            padding: 0.4rem 0;
-            overflow: hidden;
-            white-space: nowrap;
-            z-index: 90;
+        .marquee {
+            width: 100%; background: var(--green); border-top: var(--border);
+            padding: 0.4rem 0; overflow: hidden; white-space: nowrap; z-index: 90;
         }
-
-        .marquee-content {
-            display: inline-block;
-            font-family: var(--font-sans);
-            font-weight: 800; font-size: 1rem;
-            animation: scroll 25s linear infinite;
-        }
-        
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-track { display: inline-block; font-family: var(--font-sans); font-weight: 800; animation: scroll 25s linear infinite; }
+        @keyframes scroll { to { transform: translateX(-50%); } }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            main { grid-template-columns: 1fr; text-align: center; gap: 3rem; padding: 8rem 1.5rem 4rem; }
-            .content-wrapper, h1 { align-items: center; }
+            main { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-text { align-items: center; }
             h1 { transform: rotate(0deg); padding: 1.5rem; }
-            .title-big { font-size: 4rem; }
-            .title-small { font-size: 2rem; }
-            .cta-button { padding: 1.5rem 2rem; }
-            .btn-text-top { font-size: 1.3rem; }
-            .btn-text-email { font-size: 1.1rem; }
-            nav.brutal-box { width: 90%; justify-content: center; padding: 0.8rem; }
-            .image-wrapper { max-width: 320px; }
-            .badge { right: 0px; }
+            h1 span:first-child { font-size: 4rem; }
+            h1 span:last-child { font-size: 2rem; }
+            .cta-btn { padding: 1.5rem 2rem; margin-left: 0; /* Reset margin on mobile */ }
+            .cta-btn strong { font-size: 1.3rem; }
+            .cta-btn span { font-size: 1.1rem; }
+            nav.brutal { width: 90%; justify-content: center; }
+            .badge { right: 0; }
         }
     </style>
 </head>
@@ -196,108 +127,92 @@
 
     <canvas id="bg-canvas"></canvas>
 
-    <nav class="brutal-box">
-        <a href="/" class="nav-btn">Kotisivu</a>
-        <a href="/visiotech" class="nav-btn">Visiotech</a>
+    <nav class="brutal">
+        <a href="/" class="nav-link">Kotisivu</a>
+        <a href="/visiotech" class="nav-link">Visiotech</a>
     </nav>
 
     <main>
-        <div class="content-wrapper">
-            <h1 class="brutal-box">
-                <span class="title-big">Moikka!</span>
-                <span class="title-small">Mä oon Julius.</span>
+        <div class="hero-text">
+            <h1 class="brutal">
+                <span>Moikka!</span>
+                <span>Mä oon Julius.</span>
             </h1>
-            <a href="mailto:moikkajulius@gmail.com" class="cta-button brutal-box">
-                <span class="btn-text-top">Moikkaa mua:</span>
-                <span class="btn-text-email">moikkajulius@gmail.com</span>
+            
+            <a href="mailto:moikkajulius@gmail.com" class="cta-btn brutal interactive">
+                <strong>Moikkaa mua:</strong>
+                <span>moikkajulius@gmail.com</span>
             </a>
         </div>
 
-        <div class="image-wrapper">
-            <div class="image-container">
-                <img src="selfie.jpg" alt="Julius">
+        <div class="img-wrapper">
+            <div class="img-frame">
+                <img src="selfie.jpg" alt="Julius Peltokangas">
             </div>
             <div class="badge">ESPOO / FINLAND</div>
         </div>
     </main>
 
-    <div class="marquee-container">
-        <div class="marquee-content" id="banner-text">
+    <footer class="marquee">
+        <div class="marquee-track" id="banner-text">
             JULIUS@PELTOKANG.AS &emsp; ✦ &emsp; MOIKKAJULIUS@GMAIL.COM &emsp; ✦ &emsp;
         </div>
-    </div>
+    </footer>
 
     <script>
-        // --- BACKGROUND ---
+        /* --- CANVAS BACKGROUND --- */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         const colors = ['#FF5D8F', '#8FFF5D', '#5D8FFF', '#FFF'];
-        let width, height, shapes = [];
-        let mouse = { x: undefined, y: undefined };
+        let shapes = [], mouse = { x: -999, y: -999 };
 
-        class Shape {
-            constructor() {
-                this.size = (Math.random() * 40) + 20;
-                this.x = this.baseX = Math.random() * (width - this.size * 2) + this.size;
-                this.y = this.baseY = Math.random() * (height - this.size * 2) + this.size;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.isCircle = Math.random() > 0.5;
-                this.density = (Math.random() * 20) + 1;
-            }
-            
-            draw() {
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            shapes = Array.from({ length: 25 }, () => ({
+                size: Math.random() * 40 + 20,
+                x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                baseX: 0, baseY: 0,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                isCircle: Math.random() > 0.5,
+                density: Math.random() * 20 + 1
+            }));
+            shapes.forEach(s => { s.baseX = s.x; s.baseY = s.y; });
+        };
+
+        const update = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            shapes.forEach(s => {
+                const dx = mouse.x - s.x, dy = mouse.y - s.y;
+                const dist = Math.hypot(dx, dy);
+                
+                if (dist < 200) {
+                    const force = (200 - dist) / 200;
+                    s.x -= (dx / dist) * force * s.density;
+                    s.y -= (dy / dist) * force * s.density;
+                } else {
+                    s.x += (s.baseX - s.x) * 0.1;
+                    s.y += (s.baseY - s.y) * 0.1;
+                }
+
                 ctx.beginPath();
-                ctx.lineWidth = 3;
-                ctx.strokeStyle = 'black';
-                ctx.fillStyle = this.color;
-                if (this.isCircle) {
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                } else {
-                    ctx.rect(this.x, this.y, this.size, this.size);
-                }
+                ctx.lineWidth = 3; ctx.strokeStyle = 'black'; ctx.fillStyle = s.color;
+                s.isCircle ? ctx.arc(s.x, s.y, s.size, 0, Math.PI*2) : ctx.rect(s.x, s.y, s.size, s.size);
                 ctx.fill(); ctx.stroke();
-            }
+            });
+            requestAnimationFrame(update);
+        };
 
-            update() {
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-                const maxDist = 200;
-
-                if (dist < maxDist) {
-                    const force = (maxDist - dist) / maxDist;
-                    const dirX = (dx / dist) * force * this.density;
-                    const dirY = (dy / dist) * force * this.density;
-                    this.x -= dirX; this.y -= dirY;
-                } else {
-                    if (this.x !== this.baseX) this.x -= (this.x - this.baseX) / 10;
-                    if (this.y !== this.baseY) this.y -= (this.y - this.baseY) / 10;
-                }
-                this.draw();
-            }
-        }
-
-        function init() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            shapes = Array.from({ length: 25 }, () => new Shape());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            shapes.forEach(s => s.update());
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', init);
+        window.addEventListener('resize', resize);
         window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+        
+        resize();
+        update();
 
-        init();
-        animate();
-
-        // --- MARQUEE LOOP ---
+        /* --- MARQUEE --- */
         const banner = document.getElementById('banner-text');
-        if (banner) banner.innerHTML = banner.innerHTML.repeat(6);
+        const repeats = Math.ceil((window.innerWidth * 2) / banner.offsetWidth) + 2;
+        banner.innerHTML = banner.innerHTML.repeat(repeats);
     </script>
 </body>
 </html>
