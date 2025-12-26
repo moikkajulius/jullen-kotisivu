@@ -87,11 +87,17 @@
         .img-wrapper { position: relative; width: 100%; max-width: 380px; }
         .img-frame {
             aspect-ratio: 1 / 1.2; overflow: hidden; position: relative;
-            background: white; border: var(--border); box-shadow: 12px 12px 0 0 #000;
+            background: #ccc; border: var(--border); box-shadow: 12px 12px 0 0 #000;
             transition: transform 0.3s ease;
         }
         .img-frame:hover { transform: scale(1.02) rotate(1deg); }
-        .img-frame img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
+        .img-bg { 
+            width: 100%; 
+            height: 100%; 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
         .badge {
             position: absolute; top: -20px; right: -20px;
@@ -147,7 +153,7 @@
 
         <div class="img-wrapper">
             <div class="img-frame">
-                <img src="selfie.jpg" alt="Julius Peltokangas">
+                <div class="img-bg" style="background-image: url('selfie.jpg');" role="img" aria-label="Julius Peltokangas"></div>
             </div>
             <div class="badge">ESPOO / FINLAND</div>
         </div>
