@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="visio_favicon.png">
+<title>DEMO Etusivu - Visiotech</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@400;500;700&display=swap');
+    :root { --bg:#e0e5eb; --acc:#cf6401; --txt:#262626; --sd:#b8b9be; --sl:#fff; }
+    * { box-sizing:border-box; margin:0; padding:0; font-family:'Inter', sans-serif; }
+    body { background:var(--bg); color:var(--txt); min-height:100vh; display:flex; flex-direction:column; }
+    
+    /* Components */
+    .panel { position:relative; background:var(--bg); border-radius:30px; box-shadow:20px 20px 60px var(--sd), -20px -20px 60px var(--sl), inset 0 0 0 2px #fff8; overflow:hidden; transition:0.2s; }
+    .panel>b { width:16px; height:16px; background:linear-gradient(145deg, #dcdcdc, #a0a0a0); border-radius:50%; border:1px solid #999; position:absolute; z-index:5; box-shadow:inset 1px 1px 2px #fffc, 1px 1px 2px #0005; display:flex; align-items:center; justify-content:center; }
+    .panel>b::after { content:'+'; font-family:monospace; color:#666; transform:rotate(45deg); font-size:18px; line-height:0; padding-bottom:2px; text-shadow:0 1px 1px #fff8; }
+    .tl { top:18px; left:20px; } .tr { top:18px; right:20px; } .bl { bottom:18px; left:20px; } .br { bottom:18px; right:20px; }
+
+    /* Nav */
+    nav { position:fixed; top:0.8rem; left:50%; transform:translateX(-50%); width:95%; max-width:1200px; padding:1rem 1.5rem; background:var(--bg); border-radius:20px; box-shadow:8px 8px 16px var(--sd), -8px -8px 16px var(--sl); display:flex; justify-content:space-between; align-items:center; z-index:1000; }
+    nav ul { display:flex; gap:1rem; list-style:none; flex-wrap:wrap; justify-content:flex-end; align-items:center; }
+    nav li { position:relative; }
+    nav .logo { padding:0; display:flex; border:none; }
+    nav button { padding:0 1rem; height:42px; border-radius:16px; background:var(--bg); border:none; font-weight:600; cursor:pointer; color:var(--txt); font-size:1rem; box-shadow:5px 5px 10px var(--sd), -5px -5px 10px var(--sl); transition:0.2s; white-space:nowrap; display:flex; align-items:center; justify-content:center; }
+    nav button:hover { color:var(--acc); transform:translateY(-1px); }
+    nav div { position:absolute; top:100%; left:0; width:220px; background:var(--bg); padding:1rem; border-radius:16px; margin-top:10px; visibility:hidden; opacity:0; transform:translateY(10px); transition:0.3s; box-shadow: 4px 4px 8px var(--sd), -4px -4px 8px var(--sl); z-index:1005; }
+    nav div::before { content:""; position:absolute; top:-10px; left:0; width:100%; height:10px; }
+    nav a { display:block; padding:0.8rem; color:#000; text-decoration:none; border-bottom:2px solid #0001; transition:0.2s; }
+    nav a:hover { color:var(--acc); }
+	nav a:last-child { border-bottom: none; }
+
+    /* Hamburger & Mobile */
+    .hamburger { display:none; width:44px; height:44px; background:var(--bg); border:none; border-radius:12px; box-shadow:5px 5px 10px var(--sd), -5px -5px 10px var(--sl); flex-direction:column; justify-content:center; align-items:center; gap:5px; cursor:pointer; z-index:1001; }
+    .hamburger span { width:24px; height:3px; background:var(--txt); border-radius:2px; transition:0.3s; }
+    .hamburger:active { transform:scale(0.95); }
+    @media (min-width:1001px) { nav li:hover div { opacity:1; visibility:visible; transform:translateY(0); } }
+    @media (max-width:1000px) {
+        .hamburger { display:flex; }
+        nav ul { display:none; position:absolute; top:90px; left:0; right:0; background:var(--bg); flex-direction:column; flex-wrap:nowrap; justify-content:flex-start; align-items:stretch; padding:1.5rem; border-radius:20px; box-shadow:8px 8px 16px var(--sd); max-height:80vh; overflow-y:auto; }
+        nav ul.active { display:flex; }
+        nav li { width:100%; margin-bottom:0.5rem; flex-shrink:0; }
+        nav button { width:100%; justify-content:flex-start; }
+        nav div { position:static; width:100%; opacity:1; visibility:visible; transform:none; box-shadow:inset 3px 3px 6px var(--sd), inset -3px -3px 6px var(--sl); margin-top:0.5rem; display:none; }
+        nav div.open { display:block; }
+    }
+
+    /* Layout & Content */
+    main, section, footer { width:85%; max-width:1100px; margin:0 auto 2.5rem; }
+    main { padding-top:120px; display:grid; grid-template-columns:2fr 1fr; gap:2rem; padding-bottom:0; }
+    .glass { background:linear-gradient(135deg, #303030, #141414); padding:3rem; height:100%; display:flex; flex-direction:column; justify-content:center; position:relative; }
+    .glass::before { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(#0000 50%, #0001 20%), linear-gradient(90deg, #f001, #0f01, #00f1); background-size:100% 4px, 4px 100%; }
+    h1 { color:#f0f0f0; font-size:3rem; line-height:1.2; margin-bottom:1.5rem; letter-spacing:-1px; z-index:2; }
+    .sub { color:#e0e0e0; font-size:1.1rem; line-height:1.6; z-index:2; font-family:'Roboto Mono', monospace; }
+    
+    .track { display:flex; width:500%; height:100%; animation:s 20s infinite; }
+    .track img { width:20%; height:100%; object-fit:cover; opacity:0.9; }
+    @keyframes s{ 0%,20%{transform:translateX(0)} 25%,45%{transform:translateX(-20%)} 50%,70%{transform:translateX(-40%)} 75%,95%{transform:translateX(-60%)} 100%{transform:translateX(-80%)} }
+    .track-panel { box-shadow:5px 5px 15px var(--sd), -5px -5px 15px var(--sl), inset 0 0 0 2px #fff8; }
+
+    .grids { display:grid; gap:2rem; } .g2 { grid-template-columns:1fr 1fr; } .g4 { grid-template-columns:repeat(4,1fr); }
+    .grp { padding:3rem; display:flex; flex-direction:column; justify-content:center; box-shadow:inset 4px 4px 8px var(--sd), inset -4px -4px 8px var(--sl); }
+    .lbl { color:var(--acc); font-weight:800; letter-spacing:1px; margin-bottom:1.6rem; text-transform:uppercase; font-size:1.6rem; }
+    .row { display:flex; justify-content:space-between; border-bottom:1px dashed #ccc; padding-bottom:10px; margin-bottom:0.7rem; font-size:1.2rem; font-family:'Roboto Mono', monospace; }
+    
+    .card { text-decoration:none; padding:3rem 1.5rem; text-align:center; color:var(--txt); display:flex; flex-direction:column; align-items:center; height:100%; }
+    .card:hover { transform:translateY(-3px); box-shadow:22px 22px 65px var(--sd), -22px -22px 65px var(--sl); }
+    .icon { color:var(--acc); width:48px; height:48px; margin-bottom:1.2rem; filter:drop-shadow(0 0 2px #cf640150); }
+    .partner { padding:2.5rem; text-align:center; margin-top:2.5rem; box-shadow: inset 4px 4px 8px var(--sd), inset -4px -4px 8px var(--sl); }
+    
+    .foot { padding:3rem; } .ft-s h3 { font-size:1rem; margin-bottom:1rem; text-transform:uppercase; } .ft-s p { line-height:1.5; }
+    .ft-l a { display:block; margin-bottom:0.5rem; font-size:0.9rem; color:var(--txt); text-decoration:none; } .ft-l a:hover { color:var(--acc); }
+
+    @media (max-width:992px) { main, .g2, .g4 { grid-template-columns:1fr; } .g4 { grid-template-columns:1fr 1fr; } }
+    @media (max-width:600px) { .g4 { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo"><img src="image_0.png" alt="Logo" height="40"></a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Avaa valikko"><span></span><span></span><span></span></button>
+    <ul id="nav-menu">
+        <li><button onclick="ts(this)">Palvelut viestintään</button><div><a href="#">Puhelinjärjestelmät</a><a href="#">Yrityslaajakaista</a><a href="#">Microsoft 365 Business</a><a href="#">Viestintäratkaisut</a></div></li>
+        <li><button onclick="ts(this)">Pilvipalvelut</button><div><a href="#">Kotisivut ja ylläpito</a><a href="#">Sähköpostilaatikot</a><a href="#">Virus- ja roskapostisuodatus</a><a href="#">Etävarmuuskopiointi</a><a href="#">Virtuaalipalvelimet</a><a href="#">Virtuaalinen työpöytä (VDI)</a><a href="#">Hosted Private Cloud</a><a href="#">Microsoft 365 Business</a><a href="#">Palvelupaketit</a></div></li>
+        <li><button onclick="ts(this)">Tietoturva</button><div><a href="#">WithSecure</a><a href="#">Verkonvalvonta</a><a href="#">Palomuuripalvelu</a></div></li>
+        <li><button onclick="ts(this)">IT-ylläpito</button><div><a href="#">Lähituki</a><a href="#">Etätuki</a><a href="#">Laite- ja ohjelmistohankinnat</a></div></li>
+        <li><button onclick="ts(this)">Yritys</button><div><a href="#">Tietoa meistä</a><a href="#">Asiakkaita</a></div></li>
+        <li><button onclick="ts(this)">Yhteystiedot</button><div><a href="#">Ota yhteyttä</a></div></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="panel">
+        <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+        <div class="glass">
+            <h1>Tehokkaat ja turvalliset <span style="color:var(--acc)">ICT-ratkaisut</span> viestintään ja työskentelyyn</h1>
+            <p class="sub">Visiotechillä on yli kymmenen vuoden kokemus verkko- ja puheratkaisujen rakentamisesta. Tuomme modernit ICT-ratkaisut asiakkaillemme yhdessä tunnettujen yhteistyökumppaniemme kanssa.</p>
+        </div>
+    </div>
+    <div class="panel track-panel">
+        <div class="track"><img src="image_2.jpg"><img src="image_3.jpg"><img src="image_4.jpg"><img src="image_5.jpg"><img src="image_2.jpg"></div>
+    </div>
+</main>
+
+<section class="grids g2">
+    <div class="grp panel">
+        <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+        <span class="lbl">Asiakaspalvelu</span>
+        <div class="row"><span>Vaihde</span> <span id="st" style="color:var(--acc)">ONLINE</span></div>
+        <div class="row"><span>Vastausaika</span> <span>Noin 8 sekuntia</span></div>
+        <div class="row" style="border:none"><span>Puhelinnumero</span> <span>020 786 1600</span></div>
+    </div>
+    <div class="grp panel">
+        <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+        <span class="lbl">Myynti</span>
+        <div class="row"><span>Puhelinnumero</span><span>020 786 1608</span></div>
+        <div class="row" style="border:none"><span>Sähköposti</span><span>myynti (ät) visiotech.fi</span></div>
+    </div>
+</section>
+
+<section>
+    <div class="grids g4">
+        <a href="#" class="card panel">
+            <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <h3>Palvelut viestintään</h3>
+        </a>
+        <a href="#" class="card panel">
+            <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+            <h3>Pilvipalvelut</h3>
+        </a>
+        <a href="#" class="card panel">
+            <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <h3>Tietoturva</h3>
+        </a>
+        <a href="#" class="card panel">
+            <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <h3>IT-ylläpito</h3>
+        </a>
+    </div>
+
+    <div class="partner panel">
+        <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+        <h2 style="margin-bottom:1.5rem">VISIOTECHIN KUMPPANEITA:</h2>
+        <img src="image_1.png" alt="Partners" style="max-width:100%">
+    </div>
+</section>
+
+<footer>
+    <div class="foot panel">
+        <b class="tl"></b><b class="tr"></b><b class="bl"></b><b class="br"></b>
+        <div class="grids g4 ft-s">
+            <div><h3>VisioTech Finland Oy</h3><p>Ruukintie 3<br>02330 Espoo</p></div>
+            <div><h3>Vaihde</h3><p>020 786 1600<br>visiotech (ät) visiotech.fi</p></div>
+            <div><h3>Myynti</h3><p>020 786 1608<br>myynti (ät) visiotech.fi</p></div>
+            <div><h3>Yritystuki</h3><p>020 786 1609<br>yritystuki (ät) visiotech.fi</p></div>
+        </div>
+        <div style="border-top:2px solid #0001; margin:2rem 0"></div>
+        <div class="grids g4 ft-l">
+            <div><a href="#">Puhelinjärjestelmät</a><a href="#">Yrityslaajakaista</a><a href="#">Microsoft 365 Business</a><a href="#">Viestintäratkaisut</a></div>
+            <div><a href="#">Kotisivut ja ylläpito</a><a href="#">Sähköpostilaatikot</a><a href="#">Virus- ja roskapostisuodatus</a><a href="#">Etävarmuuskopiointi</a><a href="#">Virtuaalipalvelimet</a><a href="#">Virtuaalinen työpöytä (VDI)</a><a href="#">Hosted Private Cloud</a><a href="#">Microsoft 365 Business</a><a href="#">Palvelupaketit</a></div>
+            <div><a href="#">WithSecure</a><a href="#">Verkonvalvonta</a><a href="#">Palomuuripalvelu</a><br><a href="#">Lähituki</a><a href="#">Etätuki</a><a href="#">Laite- ja ohjelmistohankinnat</a></div>
+            <div><a href="#">Tietoa meistä</a><a href="#">Asiakkaita</a><br><a href="#">Ota yhteyttä</a></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const u=()=>{
+        const d=new Date(),h=d.getHours(),o=d.getDay()>=1&&d.getDay()<=5&&h>=8&&h<16,e=document.getElementById('st');
+        e.innerText=o?"Avoinna":"Tällä hetkellä suljettu"; e.style.color=o?"var(--acc)":"#8b0000";
+    }; u(); setInterval(u,60000);
+    function toggleMenu(){ document.getElementById('nav-menu').classList.toggle('active'); }
+    function ts(b){ if(window.innerWidth<=1000) b.nextElementSibling.classList.toggle('open'); }
+</script>
+</body>
+</html>

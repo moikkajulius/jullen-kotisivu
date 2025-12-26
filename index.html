@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julius Peltokang.as</title>
+    <style>
+        :root {
+            --bg: #f0f0f0;
+            --accent-pink: #FF5D8F;
+            --accent-green: #8FFF5D;
+            --accent-blue: #5D8FFF;
+            --border: 3px solid #000;
+            --shadow: 6px 6px 0px 0px #000;
+            --shadow-hover: 2px 2px 0px 0px #000;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: Arial, Helvetica, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: #000;
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            min-height: 100vh;
+            /* FIX 1: Relative positioning ensures the absolute marquee stays at the bottom of the CONTENT, not the screen */
+            position: relative; 
+            padding-bottom: 60px; /* Space for marquee */
+        }
+
+        /* --- SHARED UTILITIES --- */
+        .brutal-box {
+            background: white;
+            border: var(--border);
+            box-shadow: var(--shadow);
+            z-index: 10;
+        }
+        
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+
+        /* --- BACKGROUND --- */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+        /* --- NAVIGATION --- */
+        /* FIX 2: Added .brutal-box to selector to increase specificity so z-index 999 applies */
+        nav.brutal-box {
+            position: fixed;
+            top: 2rem; left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
+            gap: 1.5rem;
+            z-index: 999; /* Ensures it stays on top of everything */
+            display: flex;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            color: black;
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            padding: 0.3rem 0.6rem;
+            border: 3px solid transparent;
+            transition: 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-blue);
+            border-color: black;
+            box-shadow: 4px 4px 0px black;
+            transform: translate(-2px, -2px);
+        }
+
+        /* --- MAIN LAYOUT --- */
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding: 9rem 3rem 4rem;
+            align-items: center;
+        }
+
+        /* --- TYPOGRAPHY & BUTTONS --- */
+        .content-wrapper { display: flex; flex-direction: column; align-items: flex-start; z-index: 10; }
+
+        h1 {
+            font-family: var(--font-sans);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            padding: 2.5rem;
+            transform: rotate(-2deg);
+            display: flex; flex-direction: column;
+        }
+        
+        .title-big { font-size: 6rem; font-weight: 800; }
+        .title-small { font-size: 3rem; font-weight: 600; margin-top: 0.5rem; }
+
+        .cta-button {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--accent-pink);
+            color: black;
+            text-decoration: none;
+            padding: 2rem 3rem;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-text-top { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 1px; font-family: --font-main, sans-serif; }
+        .btn-text-email { font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; }
+
+        .cta-button:hover { transform: translate(4px, 4px); box-shadow: var(--shadow-hover); background-color: var(--accent-green); }
+        .cta-button:active { transform: translate(6px, 6px); box-shadow: none; }
+
+        /* --- IMAGE SECTION --- */
+        .image-wrapper { position: relative; width: 100%; max-width: 380px; justify-self: center; z-index: 10; }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 1 / 1.2;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+            box-shadow: 12px 12px 0px 0px black;
+            border: var(--border);
+            background: white;
+            z-index: 1;
+        }
+
+        .image-container:hover { transform: scale(1.02) rotate(1deg); }
+        .image-container img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+        .badge {
+            position: absolute;
+            top: -20px; right: -20px;
+            background: var(--accent-green);
+            border: var(--border);
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-family: var(--font-sans);
+            transform: rotate(15deg);
+            box-shadow: 4px 4px 0px black;
+            z-index: 5;
+        }
+
+        /* --- MARQUEE --- */
+        .marquee-container {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: var(--accent-green);
+            border-top: var(--border);
+            padding: 0.4rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 90;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-weight: 800; font-size: 1rem;
+            animation: scroll 25s linear infinite;
+        }
+        
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            main { grid-template-columns: 1fr; text-align: center; gap: 3rem; padding: 8rem 1.5rem 4rem; }
+            .content-wrapper, h1 { align-items: center; }
+            h1 { transform: rotate(0deg); padding: 1.5rem; }
+            .title-big { font-size: 4rem; }
+            .title-small { font-size: 2rem; }
+            .cta-button { padding: 1.5rem 2rem; }
+            .btn-text-top { font-size: 1.3rem; }
+            .btn-text-email { font-size: 1.1rem; }
+            nav.brutal-box { width: 90%; justify-content: center; padding: 0.8rem; }
+            .image-wrapper { max-width: 320px; }
+            .badge { right: 0px; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="brutal-box">
+        <a href="/" class="nav-btn">Kotisivu</a>
+        <a href="/visiotech" class="nav-btn">Visiotech</a>
+    </nav>
+
+    <main>
+        <div class="content-wrapper">
+            <h1 class="brutal-box">
+                <span class="title-big">Moikka!</span>
+                <span class="title-small">Mä oon Julius.</span>
+            </h1>
+            <a href="mailto:moikkajulius@gmail.com" class="cta-button brutal-box">
+                <span class="btn-text-top">Moikkaa mua:</span>
+                <span class="btn-text-email">moikkajulius@gmail.com</span>
+            </a>
+        </div>
+
+        <div class="image-wrapper">
+            <div class="image-container">
+                <img src="selfie.jpg" alt="Julius">
+            </div>
+            <div class="badge">ESPOO / FINLAND</div>
+        </div>
+    </main>
+
+    <div class="marquee-container">
+        <div class="marquee-content" id="banner-text">
+            JULIUS@PELTOKANG.AS &emsp; ✦ &emsp; MOIKKAJULIUS@GMAIL.COM &emsp; ✦ &emsp;
+        </div>
+    </div>
+
+    <script>
+        // --- BACKGROUND ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        const colors = ['#FF5D8F', '#8FFF5D', '#5D8FFF', '#FFF'];
+        let width, height, shapes = [];
+        let mouse = { x: undefined, y: undefined };
+
+        class Shape {
+            constructor() {
+                this.size = (Math.random() * 40) + 20;
+                this.x = this.baseX = Math.random() * (width - this.size * 2) + this.size;
+                this.y = this.baseY = Math.random() * (height - this.size * 2) + this.size;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.isCircle = Math.random() > 0.5;
+                this.density = (Math.random() * 20) + 1;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = 'black';
+                ctx.fillStyle = this.color;
+                if (this.isCircle) {
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                } else {
+                    ctx.rect(this.x, this.y, this.size, this.size);
+                }
+                ctx.fill(); ctx.stroke();
+            }
+
+            update() {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                const maxDist = 200;
+
+                if (dist < maxDist) {
+                    const force = (maxDist - dist) / maxDist;
+                    const dirX = (dx / dist) * force * this.density;
+                    const dirY = (dy / dist) * force * this.density;
+                    this.x -= dirX; this.y -= dirY;
+                } else {
+                    if (this.x !== this.baseX) this.x -= (this.x - this.baseX) / 10;
+                    if (this.y !== this.baseY) this.y -= (this.y - this.baseY) / 10;
+                }
+                this.draw();
+            }
+        }
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            shapes = Array.from({ length: 25 }, () => new Shape());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            shapes.forEach(s => s.update());
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+        window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+
+        init();
+        animate();
+
+        // --- MARQUEE LOOP ---
+        const banner = document.getElementById('banner-text');
+        if (banner) banner.innerHTML = banner.innerHTML.repeat(6);
+    </script>
+</body>
+</html>
