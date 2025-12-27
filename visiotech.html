@@ -335,35 +335,50 @@
     // --- RSS FEED LOGIC ---
     async function loadRSS() {
         const container = document.getElementById('rss-feed-container');
-        const feedUrl = 'https://www.visiotech.fi/feed/';
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=4`;
+        // We now point to our local PHP proxy instead of the external API
+        const proxyUrl = 'feed-proxy.php';
 
         try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
+            const response = await fetch(proxyUrl);
+            
+            // If the PHP script fails (e.g. 404 or 500 server error)
+            if (!response.ok) throw new Error('Proxy unreachable');
 
-            if(data.status === 'ok') {
+            const str = await response.text();
+            
+            // Parse the XML response
+            const data = new window.DOMParser().parseFromString(str, "text/xml");
+            const items = data.querySelectorAll("item");
+
+            if(items.length > 0) {
                 let htmlContent = '';
-                data.items.forEach(item => {
-                    const dateObj = new Date(item.pubDate);
+                
+                // Convert NodeList to Array and take the first 4 items
+                Array.from(items).slice(0, 4).forEach(item => {
+                    // Extract text content safely
+                    const title = item.querySelector("title") ? item.querySelector("title").textContent : 'Ei otsikkoa';
+                    const link = item.querySelector("link") ? item.querySelector("link").textContent : '#';
+                    const rawDate = item.querySelector("pubDate") ? item.querySelector("pubDate").textContent : new Date();
+                    
+                    const dateObj = new Date(rawDate);
                     const dateStr = dateObj.toLocaleDateString('fi-FI');
 
                     htmlContent += `
-                        <a href="${item.link}" target="_blank" class="panel card rss-card">
+                        <a href="${link}" target="_blank" class="panel card rss-card">
                             <b class="bolt tl"></b><b class="bolt tr"></b><b class="bolt bl"></b><b class="bolt br"></b>
                             <span class="rss-tag">AJANKOHTAISTA</span>
                             <div class="rss-date">${dateStr}</div>
-                            <h3 class="rss-title">${item.title}</h3>
+                            <h3 class="rss-title">${title}</h3>
                         </a>
                     `;
                 });
                 container.innerHTML = htmlContent;
             } else {
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Uutisia ei voitu ladata.</div>';
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Uutisia ei löytynyt.</div>';
             }
         } catch (error) {
             console.error('RSS Fetch Error:', error);
-            container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Virhe uutisten latauksessa.</div>';
+            container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Virhe uutisten latauksessa (XML).</div>';
         }
     }
     loadRSS();
