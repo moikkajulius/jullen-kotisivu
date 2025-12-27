@@ -335,36 +335,42 @@
     // --- RSS FEED LOGIC ---
     async function loadRSS() {
         const container = document.getElementById('rss-feed-container');
-        const proxyUrl = 'feed-proxy.php';
+        
+        // We use AllOrigins to fetch the raw XML data via a proxy
+        const feedUrl = 'https://www.visiotech.fi/feed/';
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
 
         try {
             const response = await fetch(proxyUrl);
-            const str = await response.text();
-            
-            // DEBUG: Open your browser console (F12) to see what the server actually returned
-            console.log("Proxy Response:", str.substring(0, 500) + "..."); 
+            const data = await response.json(); // AllOrigins returns JSON wrapping the content
 
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(str, "text/xml");
+            if (!response.ok) throw new Error('Proxy connection failed');
+
+            // The actual XML is inside the 'contents' property
+            const xmlString = data.contents;
             
-            // Check for both RSS <item> and Atom <entry> tags just in case
+            // Parse the XML string
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(xmlString, "text/xml");
+            
+            // Try finding items (RSS) or entries (Atom)
             let items = xml.querySelectorAll("item");
             if (items.length === 0) items = xml.querySelectorAll("entry");
 
-            if(items.length > 0) {
+            if (items.length > 0) {
                 let htmlContent = '';
                 
+                // Take the first 4 items
                 Array.from(items).slice(0, 4).forEach(item => {
-                    // Safe extraction of data with fallbacks
                     const getTag = (tag) => item.querySelector(tag)?.textContent || "";
                     
                     const title = getTag("title") || "Ei otsikkoa";
                     const link = getTag("link") || "#";
-                    // Handle standard pubDate (RSS) or updated (Atom)
+                    // Handle different date formats
                     const rawDate = getTag("pubDate") || getTag("updated") || new Date().toISOString();
                     
                     const dateObj = new Date(rawDate);
-                    const dateStr = isNaN(dateObj) ? rawDate : dateObj.toLocaleDateString('fi-FI');
+                    const dateStr = isNaN(dateObj) ? "Pvm ei saatavilla" : dateObj.toLocaleDateString('fi-FI');
 
                     htmlContent += `
                         <a href="${link}" target="_blank" class="panel card rss-card">
@@ -377,13 +383,13 @@
                 });
                 container.innerHTML = htmlContent;
             } else {
-                // If we get here, the proxy returned valid HTML/XML but no items (e.g. a captcha page)
-                console.error("No items found. Response was:", str);
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Uutisia ei löytynyt (Palomuuri esto).</div>';
+                // If XML parsed but had no items, or the proxy returned an error page masquerading as text
+                console.error("XML Parsed but no items found. Content:", xmlString.substring(0, 200));
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Uutisia ei voitu hakea (Estetty).</div>';
             }
         } catch (error) {
             console.error('RSS Fetch Error:', error);
-            container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Virhe uutisten latauksessa.</div>';
+            container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; color:#888;">Virhe yhteydessä uutispalveluun.</div>';
         }
     }
     loadRSS();
