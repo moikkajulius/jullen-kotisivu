@@ -1,0 +1,486 @@
+[
+  {
+    "en": "a living room",
+    "fi": "olohuone"
+  },
+  {
+    "en": "a kitchen",
+    "fi": "keittiö"
+  },
+  {
+    "en": "downstairs",
+    "fi": "alakerta"
+  },
+  {
+    "en": "a townhouse",
+    "fi": "kaupunkipientalo"
+  },
+  {
+    "en": "a bedroom",
+    "fi": "makuuhuone"
+  },
+  {
+    "en": "a bathroom",
+    "fi": "kylpyhuone"
+  },
+  {
+    "en": "upstairs",
+    "fi": "yläkerta"
+  },
+  {
+    "en": "a hot tub",
+    "fi": "poreamme"
+  },
+  {
+    "en": "furniture",
+    "fi": "huonekalut"
+  },
+  {
+    "en": "a yard",
+    "fi": "piha"
+  },
+  {
+    "en": "a chair",
+    "fi": "tuoli"
+  },
+  {
+    "en": "an armchair",
+    "fi": "nojatuoli"
+  },
+  {
+    "en": "a bookcase",
+    "fi": "kirjahylly"
+  },
+  {
+    "en": "a desk",
+    "fi": "kirjoituspöytä"
+  },
+  {
+    "en": "a couch",
+    "fi": "sohva"
+  },
+  {
+    "en": "a story",
+    "fi": "kerros"
+  },
+  {
+    "en": "a loft",
+    "fi": "ullakkohuone"
+  },
+  {
+    "en": "a door",
+    "fi": "ovi"
+  },
+  {
+    "en": "*lead, led, led",
+    "fi": "johtaa"
+  },
+  {
+    "en": "a garage",
+    "fi": "autotalli"
+  },
+  {
+    "en": "a pond",
+    "fi": "lampi"
+  },
+  {
+    "en": "brand new",
+    "fi": "upouusi"
+  },
+  {
+    "en": "still",
+    "fi": "vielä"
+  },
+  {
+    "en": "some",
+    "fi": "joitakin"
+  },
+  {
+    "en": "an appliance",
+    "fi": "kodinkone"
+  },
+  {
+    "en": "a driveway",
+    "fi": "pihatie"
+  },
+  {
+    "en": "carry",
+    "fi": "kantaa"
+  },
+  {
+    "en": "a fridge",
+    "fi": "jääkaappi"
+  },
+  {
+    "en": "a freezer",
+    "fi": "pakastin"
+  },
+  {
+    "en": "a washing machine",
+    "fi": "pyykinpesukone"
+  },
+  {
+    "en": "a dishwasher",
+    "fi": "astianpesukone"
+  },
+  {
+    "en": "a stove",
+    "fi": "liesi"
+  },
+  {
+    "en": "a microwave",
+    "fi": "mikroaaltouuni"
+  },
+  {
+    "en": "an apartment building",
+    "fi": "kerrostalo"
+  },
+  {
+    "en": "a balcony",
+    "fi": "parveke"
+  },
+  {
+    "en": "an apartment",
+    "fi": "asunto"
+  },
+  {
+    "en": "third",
+    "fi": "kolmas"
+  },
+  {
+    "en": "*take the stairs",
+    "fi": "mennä portaita"
+  },
+  {
+    "en": "*take, took, taken",
+    "fi": "ottaa, viedä"
+  },
+  {
+    "en": "an elevator",
+    "fi": "hissi"
+  },
+  {
+    "en": "I'll take a tour",
+    "fi": "teen kierroksen"
+  },
+  {
+    "en": "a building",
+    "fi": "rakennus"
+  },
+  {
+    "en": "return",
+    "fi": "palata"
+  },
+  {
+    "en": "downtown",
+    "fi": "(ydin)keskusta"
+  },
+  {
+    "en": "a town",
+    "fi": "kaupunki"
+  },
+  {
+    "en": "not far away",
+    "fi": "ei kaukana"
+  },
+  {
+    "en": "*come, came, come",
+    "fi": "tulla"
+  },
+  {
+    "en": "visit",
+    "fi": "vierailla"
+  },
+  {
+    "en": "for the weekend",
+    "fi": "viikonlopun ajaksi"
+  },
+  {
+    "en": "*meet, met, met",
+    "fi": "tavata"
+  },
+  {
+    "en": "in a while",
+    "fi": "vähän aikaan"
+  },
+  {
+    "en": "call up the stairs to her",
+    "fi": "huutaa hänelle yläkertaan"
+  },
+  {
+    "en": "clean",
+    "fi": "siivota"
+  },
+  {
+    "en": "*feed, fed, fed",
+    "fi": "ruokkia"
+  },
+  {
+    "en": "*forget, forgot, forgotten",
+    "fi": "unohtaa"
+  },
+  {
+    "en": "a chore",
+    "fi": "kotityö"
+  },
+  {
+    "en": "chill",
+    "fi": "rentoutua"
+  },
+  {
+    "en": "pull up",
+    "fi": "saapua (autolla)"
+  },
+  {
+    "en": "just",
+    "fi": "juuri"
+  },
+  {
+    "en": "drop off",
+    "fi": "jättää pois kyydistä"
+  },
+  {
+    "en": "you could take",
+    "fi": "voisit viedä"
+  },
+  {
+    "en": "a park",
+    "fi": "puisto"
+  },
+  {
+    "en": "*give a quick tour",
+    "fi": "esitellä lyhyesti"
+  },
+  {
+    "en": "*give, gave, given",
+    "fi": "antaa"
+  },
+  {
+    "en": "for dinner",
+    "fi": "päivälliseksi"
+  },
+  {
+    "en": "*let in, let in, let in",
+    "fi": "päästää sisään"
+  },
+  {
+    "en": "a trip",
+    "fi": "matka"
+  },
+  {
+    "en": "Long time no see.",
+    "fi": "Eipä olla nähty pitkään aikaan."
+  },
+  {
+    "en": "How about ...?",
+    "fi": "Miten olisi ...?"
+  },
+  {
+    "en": "before",
+    "fi": "ennen"
+  },
+  {
+    "en": "*leave, left, left",
+    "fi": "jättää"
+  },
+  {
+    "en": "stuff",
+    "fi": "tavarat"
+  },
+  {
+    "en": "a hall",
+    "fi": "eteinen"
+  },
+  {
+    "en": "We'll take it up later.",
+    "fi": "Viemme ne myöhemmin yläkertaan."
+  },
+  {
+    "en": "sound",
+    "fi": "kuulostaa"
+  },
+  {
+    "en": "*set out, set out, set out",
+    "fi": "lähteä"
+  },
+  {
+    "en": "It's been too long.",
+    "fi": "Siltä onkin liian pitkä aika."
+  },
+  {
+    "en": "*hear, heard, heard",
+    "fi": "kuulla"
+  },
+  {
+    "en": "a business trip",
+    "fi": "työmatka"
+  },
+  {
+    "en": "coming up",
+    "fi": "tulossa"
+  },
+  {
+    "en": "ask",
+    "fi": "pyytää"
+  },
+  {
+    "en": "a lift",
+    "fi": "kyyti"
+  },
+  {
+    "en": "Thanks again for inviting me.",
+    "fi": "Kiitos vielä, kun kutsuit minut."
+  },
+  {
+    "en": "*tell, told, told",
+    "fi": "kertoa"
+  },
+  {
+    "en": "move",
+    "fi": "muuttaa"
+  },
+  {
+    "en": "better",
+    "fi": "parempi"
+  },
+  {
+    "en": "What ... like?",
+    "fi": "Millainen"
+  },
+  {
+    "en": "one-story",
+    "fi": "yksikerroksinen"
+  },
+  {
+    "en": "huge",
+    "fi": "valtava"
+  },
+  {
+    "en": "out back",
+    "fi": "takapihalla"
+  },
+  {
+    "en": "quite",
+    "fi": "melko"
+  },
+  {
+    "en": "renovate",
+    "fi": "remontoida"
+  },
+  {
+    "en": "install",
+    "fi": "asentaa"
+  },
+  {
+    "en": "paint",
+    "fi": "maalata, maali"
+  },
+  {
+    "en": "wallpaper",
+    "fi": "tapetoida"
+  },
+  {
+    "en": "look like",
+    "fi": "näyttää"
+  },
+  {
+    "en": "No kidding.",
+    "fi": "Älä muuta sano."
+  },
+  {
+    "en": "all over",
+    "fi": "kaikkialle"
+  },
+  {
+    "en": "an arm",
+    "fi": "käsivarsi"
+  },
+  {
+    "en": "ache",
+    "fi": "särkeä"
+  },
+  {
+    "en": "for days",
+    "fi": "päiväkausia"
+  },
+  {
+    "en": "afterwards",
+    "fi": "jälkeenpäin"
+  },
+  {
+    "en": "It was worth it.",
+    "fi": "Se oli sen arvoista."
+  },
+  {
+    "en": "though",
+    "fi": "kuitenkin"
+  },
+  {
+    "en": "guess",
+    "fi": "arvata"
+  },
+  {
+    "en": "since",
+    "fi": "koska"
+  },
+  {
+    "en": "a learner's permit",
+    "fi": "ajoharjoittelulupa"
+  },
+  {
+    "en": "turn 15",
+    "fi": "täyttää 15"
+  },
+  {
+    "en": "driver's education",
+    "fi": "ajo-opetus"
+  },
+  {
+    "en": "pick out",
+    "fi": "valita"
+  },
+  {
+    "en": "the one I want",
+    "fi": "sen, jonka haluan"
+  },
+  {
+    "en": "a pickup truck",
+    "fi": "avolava-auto"
+  },
+  {
+    "en": "Whoa!",
+    "fi": "Vau!"
+  },
+  {
+    "en": "awesome",
+    "fi": "mahtava"
+  },
+  {
+    "en": "*say, said, said",
+    "fi": "sanoa"
+  },
+  {
+    "en": "*be afraid",
+    "fi": "pelätä"
+  },
+  {
+    "en": "crash",
+    "fi": "kolaroida"
+  },
+  {
+    "en": "heavy traffic",
+    "fi": "vilkas liikenne"
+  },
+  {
+    "en": "Bummer!",
+    "fi": "Harmi!"
+  },
+  {
+    "en": "When you come to my place",
+    "fi": "Kun tulet meille / minun luokseni"
+  },
+  {
+    "en": "Will you let me drive?",
+    "fi": "Annatko minun ajaa?"
+  }
+]

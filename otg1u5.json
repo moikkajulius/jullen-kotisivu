@@ -1,0 +1,474 @@
+[
+  {
+    "en": "a cafeteria",
+    "fi": "ruokala"
+  },
+  {
+    "en": "a menu",
+    "fi": "ruokalista"
+  },
+  {
+    "en": "a pound",
+    "fi": "rahayksikkö Isossa-Britanniassa"
+  },
+  {
+    "en": "a penny, pence",
+    "fi": "rahayksikkö Isossa-Britanniassa"
+  },
+  {
+    "en": "each",
+    "fi": "jokainen"
+  },
+  {
+    "en": "a meal",
+    "fi": "ateria"
+  },
+  {
+    "en": "include",
+    "fi": "sisältää"
+  },
+  {
+    "en": "vegetables",
+    "fi": "kasvikset"
+  },
+  {
+    "en": "fish",
+    "fi": "kala"
+  },
+  {
+    "en": "chips",
+    "fi": "ranskalaiset"
+  },
+  {
+    "en": "noodles",
+    "fi": "nuudelit"
+  },
+  {
+    "en": "meat",
+    "fi": "liha"
+  },
+  {
+    "en": "a sauce",
+    "fi": "kastike"
+  },
+  {
+    "en": "curry",
+    "fi": "intialainen kastike"
+  },
+  {
+    "en": "naan",
+    "fi": "intialainen leipä"
+  },
+  {
+    "en": "beef chilli",
+    "fi": "tulinen naudanlihakastike"
+  },
+  {
+    "en": "cheese",
+    "fi": "juusto"
+  },
+  {
+    "en": "an omelette",
+    "fi": "munakas"
+  },
+  {
+    "en": "a filled jacket potato",
+    "fi": "täytetty uuniperuna"
+  },
+  {
+    "en": "tuna",
+    "fi": "tonnikala"
+  },
+  {
+    "en": "coleslaw",
+    "fi": "kaalisalaatti"
+  },
+  {
+    "en": "grab and go",
+    "fi": "nappaa mukaan"
+  },
+  {
+    "en": "a slice",
+    "fi": "viipale"
+  },
+  {
+    "en": "a baguette",
+    "fi": "patonki"
+  },
+  {
+    "en": "a fish finger",
+    "fi": "kalapuikko"
+  },
+  {
+    "en": "a bap",
+    "fi": "sämpylä"
+  },
+  {
+    "en": "pulled pork",
+    "fi": "nyhtöpossu"
+  },
+  {
+    "en": "a sandwich",
+    "fi": "leipä"
+  },
+  {
+    "en": "BBQ sauce",
+    "fi": "grillikastike"
+  },
+  {
+    "en": "a dessert",
+    "fi": "jälkiruoka"
+  },
+  {
+    "en": "a jelly pot",
+    "fi": "hyytelöannos"
+  },
+  {
+    "en": "whip",
+    "fi": "vaahto"
+  },
+  {
+    "en": "still",
+    "fi": "hiilihapoton"
+  },
+  {
+    "en": "sparkling",
+    "fi": "hiilihapollinen"
+  },
+  {
+    "en": "a canned soft drink",
+    "fi": "tölkkilimsa"
+  },
+  {
+    "en": "prefer",
+    "fi": "pitää enemmän"
+  },
+  {
+    "en": "this term",
+    "fi": "tällä lukukaudella"
+  },
+  {
+    "en": "students in year 11",
+    "fi": "11. luokan oppilaat (9.lk Suomessa)"
+  },
+  {
+    "en": "raise money",
+    "fi": "kerätä rahaa"
+  },
+  {
+    "en": "for charity",
+    "fi": "hyväntekeväisyyteen"
+  },
+  {
+    "en": "as part of",
+    "fi": "osana"
+  },
+  {
+    "en": "studies",
+    "fi": "opinnot"
+  },
+  {
+    "en": "*be in charge",
+    "fi": "olla vastuussa"
+  },
+  {
+    "en": "*come up with",
+    "fi": "keksiä"
+  },
+  {
+    "en": "remember",
+    "fi": "muistaa"
+  },
+  {
+    "en": "should",
+    "fi": "pitäisi"
+  },
+  {
+    "en": "catchy",
+    "fi": "osuva"
+  },
+  {
+    "en": "right",
+    "fi": "selvä"
+  },
+  {
+    "en": "what about if",
+    "fi": "entä jos"
+  },
+  {
+    "en": "*see, saw, seen",
+    "fi": "katsoa"
+  },
+  {
+    "en": "some good clues",
+    "fi": "hyviä ideoita"
+  },
+  {
+    "en": "impressed",
+    "fi": "vaikuttunut"
+  },
+  {
+    "en": "an aunt",
+    "fi": "täti"
+  },
+  {
+    "en": "promise",
+    "fi": "luvata"
+  },
+  {
+    "en": "a stall",
+    "fi": "koju"
+  },
+  {
+    "en": "the Moor Market",
+    "fi": "tori Sheffieldissä"
+  },
+  {
+    "en": "trendy",
+    "fi": "trendikäs"
+  },
+  {
+    "en": "quite busy",
+    "fi": "melko vilkas"
+  },
+  {
+    "en": "at weekends",
+    "fi": "viikonloppuisin"
+  },
+  {
+    "en": "fab(ulous)",
+    "fi": "mahtava"
+  },
+  {
+    "en": "a burger",
+    "fi": "hampurilainen"
+  },
+  {
+    "en": "serve",
+    "fi": "tarjoilla"
+  },
+  {
+    "en": "different kinds of",
+    "fi": "erilaisia"
+  },
+  {
+    "en": "something to drink",
+    "fi": "jotain juotavaa"
+  },
+  {
+    "en": "large",
+    "fi": "iso"
+  },
+  {
+    "en": "use",
+    "fi": "käyttää"
+  },
+  {
+    "en": "smell",
+    "fi": "haista"
+  },
+  {
+    "en": "a mile away",
+    "fi": "pitkän matkan päästä"
+  },
+  {
+    "en": "a fruit drink",
+    "fi": "hedelmäjuoma"
+  },
+  {
+    "en": "for dessert",
+    "fi": "jälkiruoaksi"
+  },
+  {
+    "en": "others",
+    "fi": "toiset"
+  },
+  {
+    "en": "any",
+    "fi": "yhtään"
+  },
+  {
+    "en": "a blender",
+    "fi": "tehosekoitin"
+  },
+  {
+    "en": "borrow",
+    "fi": "saada lainaksi"
+  },
+  {
+    "en": "wait",
+    "fi": "odottaa"
+  },
+  {
+    "en": "I've got it!",
+    "fi": "Keksin sen!"
+  },
+  {
+    "en": "the Pirates' Cove",
+    "fi": "Merirosvolahti"
+  },
+  {
+    "en": "excellent",
+    "fi": "loistava"
+  },
+  {
+    "en": "*make notes",
+    "fi": "tehdä muistiinpanoja"
+  },
+  {
+    "en": "a plan",
+    "fi": "suunnitelma"
+  },
+  {
+    "en": "*have a job to do",
+    "fi": "olla tehtävä"
+  },
+  {
+    "en": "minced meat",
+    "fi": "jauheliha"
+  },
+  {
+    "en": "a roll",
+    "fi": "sämpylä"
+  },
+  {
+    "en": "tofu",
+    "fi": "tofu (soijajuusto)"
+  },
+  {
+    "en": "a vegetarian",
+    "fi": "kasvissyöjä"
+  },
+  {
+    "en": "supervise",
+    "fi": "valvoa, johtaa"
+  },
+  {
+    "en": "cleaning up",
+    "fi": "siivoaminen"
+  },
+  {
+    "en": "suggest",
+    "fi": "ehdottaa"
+  },
+  {
+    "en": "a paper plate",
+    "fi": "kertakäyttölautanen"
+  },
+  {
+    "en": "plastic",
+    "fi": "muovi"
+  },
+  {
+    "en": "a knife, knives",
+    "fi": "veitsi, veitset"
+  },
+  {
+    "en": "a fork",
+    "fi": "haarukka"
+  },
+  {
+    "en": "a tea towel",
+    "fi": "keittiöpyyhe"
+  },
+  {
+    "en": "washing-up liquid",
+    "fi": "tiskiaine"
+  },
+  {
+    "en": "for a start",
+    "fi": "aluksi"
+  },
+  {
+    "en": "add",
+    "fi": "lisätä"
+  },
+  {
+    "en": "possible",
+    "fi": "mahdollinen"
+  },
+  {
+    "en": "a topping",
+    "fi": "täyte"
+  },
+  {
+    "en": "a shopping list",
+    "fi": "ostoslista"
+  },
+  {
+    "en": "veggies",
+    "fi": "kasvikset"
+  },
+  {
+    "en": "mustard",
+    "fi": "sinappi"
+  },
+  {
+    "en": "enough",
+    "fi": "tarpeeksi"
+  },
+  {
+    "en": "for now",
+    "fi": "toistaiseksi"
+  },
+  {
+    "en": "organize",
+    "fi": "järjestää"
+  },
+  {
+    "en": "the serving",
+    "fi": "tarjoilu"
+  },
+  {
+    "en": "as a waitress",
+    "fi": "tarjoilijana"
+  },
+  {
+    "en": "*be interested in",
+    "fi": "olla kiinnostunut"
+  },
+  {
+    "en": "*put together",
+    "fi": "koota"
+  },
+  {
+    "en": "*put, put, put",
+    "fi": "laittaa, asettaa"
+  },
+  {
+    "en": "dress up",
+    "fi": "pukeutua"
+  },
+  {
+    "en": "look like",
+    "fi": "näyttää joltakin"
+  },
+  {
+    "en": "let's see",
+    "fi": "katsotaan"
+  },
+  {
+    "en": "successful",
+    "fi": "menestyksekäs"
+  },
+  {
+    "en": "dream",
+    "fi": "haaveilla"
+  },
+  {
+    "en": "finish",
+    "fi": "tehdä loppuun"
+  },
+  {
+    "en": "present",
+    "fi": "esitellä"
+  },
+  {
+    "en": "on Monday",
+    "fi": "maanantaina"
+  },
+  {
+    "en": "*think, thought, thought",
+    "fi": "ajatella"
+  }
+]

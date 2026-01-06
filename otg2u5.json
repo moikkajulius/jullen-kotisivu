@@ -1,0 +1,470 @@
+[
+  {
+    "en": "health",
+    "fi": "terveys"
+  },
+  {
+    "en": "wellbeing",
+    "fi": "hyvinvointi"
+  },
+  {
+    "en": "an ear infection",
+    "fi": "korvatulehdus"
+  },
+  {
+    "en": "limit",
+    "fi": "rajoittaa"
+  },
+  {
+    "en": "screen time",
+    "fi": "ruutuaika"
+  },
+  {
+    "en": "a headache",
+    "fi": "päänsärky"
+  },
+  {
+    "en": "sneeze",
+    "fi": "aivastaa"
+  },
+  {
+    "en": "cough",
+    "fi": "yskiä"
+  },
+  {
+    "en": "*catch a cold",
+    "fi": "vilustua"
+  },
+  {
+    "en": "*catch, caught, caught",
+    "fi": "ottaa kiinni"
+  },
+  {
+    "en": "a sore throat",
+    "fi": "kipeä kurkku"
+  },
+  {
+    "en": "allergic to",
+    "fi": "allerginen"
+  },
+  {
+    "en": "a nurse",
+    "fi": "sairaanhoitaja"
+  },
+  {
+    "en": "a plaster cast",
+    "fi": "kipsi"
+  },
+  {
+    "en": "a Band-Aid",
+    "fi": "laastari"
+  },
+  {
+    "en": "a cut",
+    "fi": "haava"
+  },
+  {
+    "en": "*feel sick",
+    "fi": "voida pahoin"
+  },
+  {
+    "en": "a stomach",
+    "fi": "vatsa"
+  },
+  {
+    "en": "*hurt, hurt, hurt",
+    "fi": "sattua, satuttaa"
+  },
+  {
+    "en": "an itchy rash",
+    "fi": "kutiava ihottuma"
+  },
+  {
+    "en": "pretty",
+    "fi": "melko"
+  },
+  {
+    "en": "healthy",
+    "fi": "terveellinen"
+  },
+  {
+    "en": "a diet",
+    "fi": "ruokavalio"
+  },
+  {
+    "en": "a blister",
+    "fi": "rakkula"
+  },
+  {
+    "en": "a patient",
+    "fi": "potilas"
+  },
+  {
+    "en": "a first-aid kit",
+    "fi": "ensiapulaukku"
+  },
+  {
+    "en": "a doctor",
+    "fi": "lääkäri"
+  },
+  {
+    "en": "a swollen wrist",
+    "fi": "turvonnut ranne"
+  },
+  {
+    "en": "a sprained ankle",
+    "fi": "nyrjähdänyt nilkka"
+  },
+  {
+    "en": "a thermometer",
+    "fi": "kuumemittari"
+  },
+  {
+    "en": "a temperature",
+    "fi": "kuume"
+  },
+  {
+    "en": "exercise",
+    "fi": "harrastaa liikuntaa"
+  },
+  {
+    "en": "an exchange student",
+    "fi": "vaihto-oppilas"
+  },
+  {
+    "en": "stay with",
+    "fi": "asua, yöpyä"
+  },
+  {
+    "en": "for the autumn term",
+    "fi": "syyslukukauden ajaksi"
+  },
+  {
+    "en": "plan",
+    "fi": "suunnitella"
+  },
+  {
+    "en": "*think, thought, thought",
+    "fi": "ajatella, luulla"
+  },
+  {
+    "en": "might",
+    "fi": "saattaisi"
+  },
+  {
+    "en": "hiking",
+    "fi": "vaeltaminen"
+  },
+  {
+    "en": "bungy jumping",
+    "fi": "benjihyppy"
+  },
+  {
+    "en": "*have a cold",
+    "fi": "olla vilustunut"
+  },
+  {
+    "en": "at last",
+    "fi": "vihdoinkin"
+  },
+  {
+    "en": "I couldn't wait",
+    "fi": "tuskin maltoin odottaa"
+  },
+  {
+    "en": "*show them around",
+    "fi": "esitellä heille paikkoja"
+  },
+  {
+    "en": "*show, showed, shown",
+    "fi": "näyttää, esittää"
+  },
+  {
+    "en": "a two-day hike",
+    "fi": "kaksipäiväinen vaellus"
+  },
+  {
+    "en": "wonder",
+    "fi": "miettiä, ihmetellä"
+  },
+  {
+    "en": "recognize",
+    "fi": "tunnistaa"
+  },
+  {
+    "en": "the Misty Mountains",
+    "fi": "Sumuvuoret"
+  },
+  {
+    "en": "The Lord of the Rings",
+    "fi": "Taru sormusten herrasta"
+  },
+  {
+    "en": "carry",
+    "fi": "kantaa"
+  },
+  {
+    "en": "hiking gear",
+    "fi": "vaellusvarusteet"
+  },
+  {
+    "en": "a backpack",
+    "fi": "reppu"
+  },
+  {
+    "en": "the universe",
+    "fi": "maailmankaikkeus"
+  },
+  {
+    "en": "huge",
+    "fi": "valtava"
+  },
+  {
+    "en": "a heel",
+    "fi": "kantapää"
+  },
+  {
+    "en": "the altitude",
+    "fi": "korkeus"
+  },
+  {
+    "en": "*feel dizzy",
+    "fi": "huimata"
+  },
+  {
+    "en": "a painkiller",
+    "fi": "särkylääke"
+  },
+  {
+    "en": "solve",
+    "fi": "ratkaista"
+  },
+  {
+    "en": "slip",
+    "fi": "liukastua"
+  },
+  {
+    "en": "*fall, fell, fallen",
+    "fi": "kaatua, pudota"
+  },
+  {
+    "en": "twist an ankle",
+    "fi": "nyrjähdättyä nilkka"
+  },
+  {
+    "en": "limp",
+    "fi": "ontua"
+  },
+  {
+    "en": "cheer them up",
+    "fi": "piristää heitä"
+  },
+  {
+    "en": "while",
+    "fi": "sillä aikaa kun"
+  },
+  {
+    "en": "a kea",
+    "fi": "kea-lintu"
+  },
+  {
+    "en": "*bite, bit, bitten",
+    "fi": "purra"
+  },
+  {
+    "en": "*feed, fed, fed",
+    "fi": "ruokkia"
+  },
+  {
+    "en": "a bandage",
+    "fi": "sideharso"
+  },
+  {
+    "en": "wrap",
+    "fi": "kietoa"
+  },
+  {
+    "en": "bleeding",
+    "fi": "verenvuoto"
+  },
+  {
+    "en": "for now",
+    "fi": "tällä erää"
+  },
+  {
+    "en": "wax",
+    "fi": "vahata"
+  },
+  {
+    "en": "an adventure",
+    "fi": "seikkailu"
+  },
+  {
+    "en": "a slope",
+    "fi": "laskettelurinne"
+  },
+  {
+    "en": "sniff",
+    "fi": "niiskuttaa"
+  },
+  {
+    "en": "all the way",
+    "fi": "koko matkan"
+  },
+  {
+    "en": "by the time",
+    "fi": "siihen mennessä kun"
+  },
+  {
+    "en": "land",
+    "fi": "laskeutua"
+  },
+  {
+    "en": "pick up",
+    "fi": "hakea"
+  },
+  {
+    "en": "*be jet-lagged",
+    "fi": "kärsiä aikaerosta"
+  },
+  {
+    "en": "excited",
+    "fi": "innostunut"
+  },
+  {
+    "en": "*be into",
+    "fi": "harrastaa, olla innostunut"
+  },
+  {
+    "en": "whitewater rafting",
+    "fi": "koskenlasku"
+  },
+  {
+    "en": "the following day",
+    "fi": "seuraavana päivänä"
+  },
+  {
+    "en": "hiking boots",
+    "fi": "vaelluskengät"
+  },
+  {
+    "en": "it didn't matter",
+    "fi": "se ei haitannut"
+  },
+  {
+    "en": "far",
+    "fi": "kauas"
+  },
+  {
+    "en": "the scenery",
+    "fi": "maisemat"
+  },
+  {
+    "en": "despite",
+    "fi": "huolimatta"
+  },
+  {
+    "en": "tripping",
+    "fi": "kompastuminen"
+  },
+  {
+    "en": "awkward",
+    "fi": "kiusallinen"
+  },
+  {
+    "en": "a vegetarian",
+    "fi": "kasvissyöjä"
+  },
+  {
+    "en": "obviously",
+    "fi": "selvästi"
+  },
+  {
+    "en": "*forget, forgot, forgotten",
+    "fi": "unohtaa"
+  },
+  {
+    "en": "rude",
+    "fi": "epäkohtelias"
+  },
+  {
+    "en": "*hide, hid, hidden",
+    "fi": "piilottaa, piiloutua"
+  },
+  {
+    "en": "We didn't sleep a wink.",
+    "fi": "Emme nukkuneet silmäystäkään."
+  },
+  {
+    "en": "*get soaked",
+    "fi": "kastua läpimäräksi"
+  },
+  {
+    "en": "completely",
+    "fi": "täysin"
+  },
+  {
+    "en": "a parrot",
+    "fi": "papukaija"
+  },
+  {
+    "en": "*steal, stole, stolen",
+    "fi": "varastaa"
+  },
+  {
+    "en": "blood",
+    "fi": "veri"
+  },
+  {
+    "en": "poor",
+    "fi": "raukka"
+  },
+  {
+    "en": "*get back to town",
+    "fi": "päästä takaisin kaupunkiin"
+  },
+  {
+    "en": "a couple of",
+    "fi": "pari, muutama"
+  },
+  {
+    "en": "a stitch",
+    "fi": "tikki"
+  },
+  {
+    "en": "an injection",
+    "fi": "rokote"
+  },
+  {
+    "en": "a balloon",
+    "fi": "ilmapallo"
+  },
+  {
+    "en": "a bandage",
+    "fi": "sideharso"
+  },
+  {
+    "en": "the size of a steak",
+    "fi": "pihvin kokoinen, valtava"
+  },
+  {
+    "en": "My back is killing me.",
+    "fi": "Selkäni on tosi kipeä."
+  },
+  {
+    "en": "on the ground",
+    "fi": "kovalla maalla"
+  },
+  {
+    "en": "worse than ever",
+    "fi": "pahempi kuin koskaan"
+  },
+  {
+    "en": "at this rate",
+    "fi": "tällä menolla"
+  },
+  {
+    "en": "end up in hospital",
+    "fi": "päätyä sairaalaan"
+  }
+]

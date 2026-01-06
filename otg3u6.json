@@ -1,0 +1,462 @@
+[
+  {
+    "en": "a chairperson",
+    "fi": "puheenjohtaja"
+  },
+  {
+    "en": "communicative",
+    "fi": "puhelias"
+  },
+  {
+    "en": "respectful",
+    "fi": "kunnioittava"
+  },
+  {
+    "en": "eager",
+    "fi": "innokas"
+  },
+  {
+    "en": "efficient",
+    "fi": "tehokas"
+  },
+  {
+    "en": "an innovator",
+    "fi": "kehittäjä"
+  },
+  {
+    "en": "creative",
+    "fi": "luova"
+  },
+  {
+    "en": "a generator",
+    "fi": "ideoiden tuottaja"
+  },
+  {
+    "en": "imagination",
+    "fi": "mielikuvitus"
+  },
+  {
+    "en": "desire",
+    "fi": "halu"
+  },
+  {
+    "en": "original",
+    "fi": "omaperäinen"
+  },
+  {
+    "en": "ambitious",
+    "fi": "kunnianhimoinen"
+  },
+  {
+    "en": "energetic",
+    "fi": "energinen"
+  },
+  {
+    "en": "appear",
+    "fi": "vaikuttaa"
+  },
+  {
+    "en": "impatient",
+    "fi": "kärsimätön"
+  },
+  {
+    "en": "an explorer",
+    "fi": "tutkija"
+  },
+  {
+    "en": "curious",
+    "fi": "utelias"
+  },
+  {
+    "en": "present",
+    "fi": "esitellä"
+  },
+  {
+    "en": "develop",
+    "fi": "luoda, kehittää"
+  },
+  {
+    "en": "avoid",
+    "fi": "vältellä"
+  },
+  {
+    "en": "a conflict",
+    "fi": "ristiriita"
+  },
+  {
+    "en": "consider",
+    "fi": "pitää jonakin"
+  },
+  {
+    "en": "diplomatic",
+    "fi": "diplomaattinen"
+  },
+  {
+    "en": "polish",
+    "fi": "hioa (loppuun)"
+  },
+  {
+    "en": "automation",
+    "fi": "automaatio"
+  },
+  {
+    "en": "digitalization",
+    "fi": "digitalisaatio"
+  },
+  {
+    "en": "working life",
+    "fi": "työelämä"
+  },
+  {
+    "en": "in other words",
+    "fi": "toisin sanoen"
+  },
+  {
+    "en": "a robot",
+    "fi": "robotti"
+  },
+  {
+    "en": "technology",
+    "fi": "teknologia"
+  },
+  {
+    "en": "*have an influence on",
+    "fi": "olla vaikutus"
+  },
+  {
+    "en": "unlike",
+    "fi": "toisin kuin"
+  },
+  {
+    "en": "demand",
+    "fi": "vaatia"
+  },
+  {
+    "en": "an increase in salary",
+    "fi": "palkankorotus"
+  },
+  {
+    "en": "overtime pay",
+    "fi": "ylityökorvaus"
+  },
+  {
+    "en": "moreover",
+    "fi": "lisäksi"
+  },
+  {
+    "en": "sick leave",
+    "fi": "sairausloma"
+  },
+  {
+    "en": "a paid holiday",
+    "fi": "palkallinen loma"
+  },
+  {
+    "en": "a lunch break",
+    "fi": "lounastauko"
+  },
+  {
+    "en": "retire",
+    "fi": "jäädä eläkkeelle"
+  },
+  {
+    "en": "a pension",
+    "fi": "eläke"
+  },
+  {
+    "en": "replace",
+    "fi": "korvata"
+  },
+  {
+    "en": "admit",
+    "fi": "myöntää"
+  },
+  {
+    "en": "a manager",
+    "fi": "johtaja"
+  },
+  {
+    "en": "a point of view",
+    "fi": "näkökulma"
+  },
+  {
+    "en": "employ",
+    "fi": "työllistää"
+  },
+  {
+    "en": "humans",
+    "fi": "ihmiset"
+  },
+  {
+    "en": "*make sense",
+    "fi": "olla järkevää"
+  },
+  {
+    "en": "a worker",
+    "fi": "työntekijä"
+  },
+  {
+    "en": "*make sure",
+    "fi": "varmistaa"
+  },
+  {
+    "en": "How on earth...?",
+    "fi": "Miten ihmeessä...?"
+  },
+  {
+    "en": "prepare oneself for",
+    "fi": "valmistautua"
+  },
+  {
+    "en": "exist",
+    "fi": "olla olemassa"
+  },
+  {
+    "en": "a founder",
+    "fi": "perustaja"
+  },
+  {
+    "en": "a company",
+    "fi": "yritys"
+  },
+  {
+    "en": "online",
+    "fi": "verkko-"
+  },
+  {
+    "en": "a website",
+    "fi": "verkkosivusto"
+  },
+  {
+    "en": "point out",
+    "fi": "huomauttaa"
+  },
+  {
+    "en": "no matter how",
+    "fi": "riippumatta siitä, kuinka"
+  },
+  {
+    "en": "compete with",
+    "fi": "kilpailla"
+  },
+  {
+    "en": "a machine",
+    "fi": "kone"
+  },
+  {
+    "en": "a skill",
+    "fi": "taito"
+  },
+  {
+    "en": "focus on",
+    "fi": "keskittyä"
+  },
+  {
+    "en": "unique",
+    "fi": "ainutlaatuinen"
+  },
+  {
+    "en": "a quality",
+    "fi": "piirre"
+  },
+  {
+    "en": "patience",
+    "fi": "kärsivällisyys"
+  },
+  {
+    "en": "a sense of humor",
+    "fi": "huumorintaju"
+  },
+  {
+    "en": "common sense",
+    "fi": "terve järki"
+  },
+  {
+    "en": "flexible",
+    "fi": "joustava"
+  },
+  {
+    "en": "*make decisions",
+    "fi": "tehdä päätöksiä"
+  },
+  {
+    "en": "ensure",
+    "fi": "varmistaa"
+  },
+  {
+    "en": "a position",
+    "fi": "asema"
+  },
+  {
+    "en": "a workplace",
+    "fi": "työpaikka"
+  },
+  {
+    "en": "AI (artificial intelligence)",
+    "fi": "keinoäly"
+  },
+  {
+    "en": "a game writer",
+    "fi": "pelikäsikirjoittaja"
+  },
+  {
+    "en": "teamwork",
+    "fi": "tiimityöskentely"
+  },
+  {
+    "en": "vital",
+    "fi": "elintärkeä"
+  },
+  {
+    "en": "we bounce ideas off each other",
+    "fi": "pallottelemme ideoita keskenämme"
+  },
+  {
+    "en": "bounce",
+    "fi": "pompottaa"
+  },
+  {
+    "en": "support",
+    "fi": "tukea"
+  },
+  {
+    "en": "achieve",
+    "fi": "saavuttaa"
+  },
+  {
+    "en": "a marketing assistant",
+    "fi": "markkinointiassistentti"
+  },
+  {
+    "en": "digitally",
+    "fi": "digitaalisesti"
+  },
+  {
+    "en": "in person",
+    "fi": "henkilökohtaisesti"
+  },
+  {
+    "en": "communicate",
+    "fi": "viestiä"
+  },
+  {
+    "en": "verbal",
+    "fi": "sanallinen"
+  },
+  {
+    "en": "nonverbal",
+    "fi": "sanaton"
+  },
+  {
+    "en": "a creature",
+    "fi": "olento"
+  },
+  {
+    "en": "human",
+    "fi": "inhimillinen"
+  },
+  {
+    "en": "a robotics engineer",
+    "fi": "robotiikan insinööri"
+  },
+  {
+    "en": "solve",
+    "fi": "ratkaista"
+  },
+  {
+    "en": "*think outside the box",
+    "fi": "ajatella uudella tavalla"
+  },
+  {
+    "en": "a source",
+    "fi": "lähde"
+  },
+  {
+    "en": "consider",
+    "fi": "harkita"
+  },
+  {
+    "en": "whether",
+    "fi": "-ko, -kö"
+  },
+  {
+    "en": "have a hidden agenda",
+    "fi": "olla taka-ajatuksia"
+  },
+  {
+    "en": "*hide, hid, hidden",
+    "fi": "piilottaa"
+  },
+  {
+    "en": "*read between the lines",
+    "fi": "lukea rivien välistä"
+  },
+  {
+    "en": "*be on the lookout for",
+    "fi": "varoa, pitää silmällä"
+  },
+  {
+    "en": "fake news",
+    "fi": "valeuutiset"
+  },
+  {
+    "en": "*draw conclusions",
+    "fi": "tehdä johtopäätöksiä"
+  },
+  {
+    "en": "pull it together",
+    "fi": "koostaa"
+  },
+  {
+    "en": "a police officer",
+    "fi": "poliisi"
+  },
+  {
+    "en": "respectful",
+    "fi": "kunnioittava"
+  },
+  {
+    "en": "worth living",
+    "fi": "elämisen arvoinen"
+  },
+  {
+    "en": "accountable for",
+    "fi": "vastuussa"
+  },
+  {
+    "en": "deep down",
+    "fi": "sisimmässämme"
+  },
+  {
+    "en": "act on it",
+    "fi": "toimia sen mukaan"
+  },
+  {
+    "en": "a vlogger",
+    "fi": "vloggaaja"
+  },
+  {
+    "en": "upload",
+    "fi": "ladata verkkoon"
+  },
+  {
+    "en": "require",
+    "fi": "edellyttää"
+  },
+  {
+    "en": "ICT",
+    "fi": "TVT (tieto- ja viestintätekniikka)"
+  },
+  {
+    "en": "evaluate",
+    "fi": "arvioida"
+  },
+  {
+    "en": "reach",
+    "fi": "tavoittaa"
+  },
+  {
+    "en": "crucial",
+    "fi": "ratkaiseva"
+  }
+]
