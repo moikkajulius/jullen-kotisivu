@@ -1,0 +1,54 @@
+[
+  {
+    "sv": "åka, åker, åkte II buss",
+    "fi": "mennä, matkustaa bussilla"
+  },
+  {
+    "sv": "åka, åker, åkte II tåg",
+    "fi": "mennä, matkustaa junalla"
+  },
+  {
+    "sv": "åka, åker, åkte II båt",
+    "fi": "mennä, matkustaa laivalla"
+  },
+  {
+    "sv": "åka, åker, åkte II spårvagn",
+    "fi": "mennä, matkustaa raitiovaunulla"
+  },
+  {
+    "sv": "åka, åker, åkte II bil",
+    "fi": "mennä, matkustaa autolla"
+  },
+  {
+    "sv": "åka, åker, åkte II taxi",
+    "fi": "mennä, matkustaa taksilla"
+  },
+  {
+    "sv": "åka, åker, åkte II metro",
+    "fi": "mennä, matkustaa metrolla"
+  },
+  {
+    "sv": "åka, åker, åkte II tunnelbana",
+    "fi": "mennä, matkustaa metrolla"
+  },
+  {
+    "sv": "köra, kör, körde II moped",
+    "fi": "ajaa mopolla"
+  },
+  {
+    "sv": "köra, kör, körde II skoter",
+    "fi": "ajaa skootterilla"
+  },
+  {
+    "sv": "flyga, flyger, flög IV",
+    "fi": "lentää"
+  },
+  {
+    "sv": "cykla, cyklar, cyklade I",
+    "fi": "pyöräillä"
+  },
+  {
+    "sv": "gå, går, gick IV",
+    "fi": "kävellä"
+  }
+]

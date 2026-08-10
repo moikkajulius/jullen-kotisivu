@@ -1,0 +1,50 @@
+[
+  {
+    "sv": "ett egnahemshus, egnahemshuset, egnahemshus, egnahemshusen",
+    "fi": "omakotitalo"
+  },
+  {
+    "sv": "en villa, villan, villor, villorna",
+    "fi": "omakotitalo"
+  },
+  {
+    "sv": "ett höghus, höghuset, höghus, höghusen",
+    "fi": "kerrostalo"
+  },
+  {
+    "sv": "ett radhus, radhuset, radhus, radhusen",
+    "fi": "rivitalo"
+  },
+  {
+    "sv": "ett parhus, parhuset, parhus, parhusen",
+    "fi": "paritalo"
+  },
+  {
+    "sv": "ett sovrum, sovrummet, sovrum, sovrummen",
+    "fi": "makuuhuone"
+  },
+  {
+    "sv": "ett vardagsrum, vardagsrummet, vardagsrum, vardagsrummen",
+    "fi": "olohuone"
+  },
+  {
+    "sv": "ett kök, köket, kök, köken",
+    "fi": "keittiö"
+  },
+  {
+    "sv": "en tambur, tamburen, tamburer, tamburerna",
+    "fi": "eteinen"
+  },
+  {
+    "sv": "en toalett, toaletten, toaletter, toaletterna",
+    "fi": "vessa"
+  },
+  {
+    "sv": "en bastu, bastun, bastur, basturna",
+    "fi": "sauna"
+  },
+  {
+    "sv": "ett badrum, badrummet, badrum, badrummen",
+    "fi": "kylpyhuone"
+  }
+]

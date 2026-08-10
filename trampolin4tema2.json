@@ -1,0 +1,78 @@
+[
+  {
+    "sv": "ett väder, vädret, väder, vädren",
+    "fi": "sää"
+  },
+  {
+    "sv": "Solen skiner.",
+    "fi": "Aurinko paistaa."
+  },
+  {
+    "sv": "Det är mulet.",
+    "fi": "On pilvistä."
+  },
+  {
+    "sv": "Det regnar.",
+    "fi": "Sataa."
+  },
+  {
+    "sv": "Det blåser.",
+    "fi": "Tuulee."
+  },
+  {
+    "sv": "Det åskar.",
+    "fi": "Ukkostaa."
+  },
+  {
+    "sv": "Det snöar.",
+    "fi": "Sataa lunta."
+  },
+  {
+    "sv": "Det är varmt.",
+    "fi": "On lämmin."
+  },
+  {
+    "sv": "Det är kallt.",
+    "fi": "On kylmä."
+  },
+  {
+    "sv": "Det är 25 grader.",
+    "fi": "On 25 astetta."
+  },
+  {
+    "sv": "Det är 5 minusgrader.",
+    "fi": "On 5 astetta pakkasta."
+  },
+  {
+    "sv": "en vinter, vintern, vintrar, vintrarna",
+    "fi": "talvi"
+  },
+  {
+    "sv": "en vår, våren, vårar, vårarna",
+    "fi": "kevät"
+  },
+  {
+    "sv": "en sommar, sommaren, somrar, somrarna",
+    "fi": "kesä"
+  },
+  {
+    "sv": "en höst, hösten, höstar, höstarna",
+    "fi": "syksy"
+  },
+  {
+    "sv": "på vintern",
+    "fi": "talvella"
+  },
+  {
+    "sv": "på våren",
+    "fi": "keväällä"
+  },
+  {
+    "sv": "på sommaren",
+    "fi": "kesällä"
+  },
+  {
+    "sv": "på hösten",
+    "fi": "syksyllä"
+  }
+]
