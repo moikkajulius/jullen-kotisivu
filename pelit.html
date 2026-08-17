@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <link rel="icon" type="image/png" href="julius_favicon.png">
     <title>Julle's Games</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +64,7 @@
             margin-bottom: 2vh;
         }
 
-        /* --- Background Effects (Radial Gradient Blobs) --- */
+        /* --- Background Effects --- */
         #background-blob-container {
             height: 100vh; left: 0; overflow: hidden; pointer-events: none; position: fixed; top: 0; width: 100vw; z-index: -1;
         }
@@ -121,23 +121,36 @@
         .clay-button:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
 
         .button-mode-select { font-size: 1.8rem; margin: 8px; min-height: 70px; padding: 12px 20px; width: 85%; }
-        .button-unit-select { font-size: 1.3rem; padding: 12px 20px; }
+        
+        .button-unit-select { 
+            font-size: 1.5rem; 
+            padding: 14px 26px; 
+            min-height: 52px; 
+            margin: 6px; 
+            border-radius: 26px;
+        }
+
         .button-modal-large { font-size: 2rem; margin: 15px; min-width: 250px; padding: 20px 50px; }
         .button-wrong { background: var(--color-accent-red) !important; }
         .button-right { background: var(--color-accent-green) !important; }
 
-        /* --- Screens: Smooth Blur + Scale + Fade Transition --- */
+        /* --- Screens --- */
         .app-screen {
             align-items: center; 
             display: none; 
             flex-direction: column; 
-            height: 100vh; 
-            justify-content: center; 
+            height: 100vh;
+            justify-content: flex-start;
             opacity: 0; 
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-y: contain;
+            padding: 20px 15px;
             filter: blur(12px);
             transform: scale(0.96);
+            transform-origin: center center;
             transition: opacity var(--transition-speed) ease-in-out, filter var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out; 
-            width: 100%;
+            width: 100vw;
         }
         .app-screen.active { 
             opacity: 1; 
@@ -145,18 +158,27 @@
             transform: scale(1); 
         }
 
-        /* Screen: Unit Selection & Mode Selection Scrollable */
-        #screen-game-mode-select { overflow-y: auto; padding: 20px 0; }
-        #screen-unit-selection { overflow-y: auto; padding: 20px 0; }
-        #screen-unit-selection .clay-container { margin: 8px 0; max-height: none; padding: 15px; }
-        .unit-section h3 { color: #555; font-size: 1.5rem; margin-bottom: 8px; }
-        .unit-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+        .screen-centered-wrapper {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+            width: 100%;
+        }
 
-        /* Screen: Grid Size */
+        #screen-game-mode-select .clay-container { margin: 10px 0; }
+        #screen-unit-selection {
+            justify-content: flex-start !important;
+            padding-top: 20px;
+        }
+        #screen-unit-selection .clay-container { margin: 12px 0; max-height: none; padding: 20px; }
+        .unit-section h3 { color: #555; font-size: 1.6rem; margin-bottom: 12px; }
+        .unit-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
         .size-selection-row { display: flex; gap: 20px; justify-content: space-between; width: 100%; }
         .size-selection-row .clay-button { flex: 1; font-size: 2rem; margin: 0; padding: 30px 10px; }
 
-        /* Screen: Team Setup */
         .team-config-wrapper { display: flex; flex-direction: column; gap: 15px; max-width: 700px; width: 100%; }
         .team-count-row { display: flex; gap: 10px; justify-content: space-between; width: 100%; }
         .button-team-count { flex: 1; font-size: 2rem; margin: 0; padding: 20px 0; }
@@ -169,27 +191,65 @@
         }
         input::placeholder { color: #aaa; opacity: 0.7; }
 
-        /* Screen: Tutorial */
         .tutorial-grid { display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); width: 100%; }
         .tutorial-card { background: #fff; border-radius: 40px; font-size: 1.6rem; padding: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .tutorial-icon { display: block; font-size: 3.5rem; margin-bottom: 8px; }
 
-        /* Screen: Gameplay */
-        #screen-gameplay { justify-content: flex-start; overflow: visible; padding-top: 130px; }
+        #screen-gameplay { justify-content: flex-start; overflow-x: hidden; padding-top: 110px; }
 
         .game-header {
-            align-items: center; background: #ffffff; border-radius: 40px; box-shadow: 0 8px 20px rgba(0,0,0,0.12); display: flex; gap: 15px; justify-content: center;
-            left: 50%; overflow-x: auto; padding: 8px 30px; position: fixed; top: 15px; transform: translateX(-50%); transition: background-color 0.4s ease; width: 95%; z-index: 100;
+            align-items: center; 
+            background: #ffffff; 
+            border-radius: 40px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); 
+            display: flex; 
+            gap: 10px; 
+            justify-content: center;
+            left: 50%; 
+            overflow-x: auto; 
+            padding: 8px 20px; 
+            position: fixed; 
+            top: 12px; 
+            transform: translateX(-50%); 
+            transition: background-color 0.4s ease, width 0.3s ease; 
+            width: 95%; 
+            max-width: 1300px;
+            z-index: 100;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
+        .game-header::-webkit-scrollbar { display: none; }
 
-        .team-badge { align-items: center; border-radius: 30px; display: flex; flex-direction: column; justify-content: center; min-width: 110px; padding: 8px 18px; position: relative; transition: transform 0.3s, opacity 0.3s, border 0.3s; }
+        .team-badge { 
+            align-items: center; 
+            border-radius: 28px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            min-width: 80px; 
+            flex: 1 1 0;
+            max-width: 240px;
+            padding: 6px 14px; 
+            position: relative; 
+            transition: transform 0.3s, opacity 0.3s, border 0.3s; 
+        }
         .team-badge.active-turn { border: 4px solid #000000 !important; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); opacity: 1 !important; transform: scale(1.05); }
         .team-badge.inactive-turn { border: 4px solid transparent; opacity: 0.45; }
         .team-badge.clickable-victim { animation: pulseVictim 1.5s infinite; border-color: var(--color-accent-red) !important; cursor: pointer; opacity: 1 !important; }
-        .team-name { color: #000000; font-size: 1.4rem; font-weight: 700; white-space: nowrap; }
-        .team-score { color: #000000; font-size: 2.2rem; font-weight: 800; line-height: 1; }
+        
+        .team-name { 
+            color: #000000; 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            max-width: 100%; 
+            text-align: center;
+        }
+        .team-score { color: #000000; font-size: 2rem; font-weight: 800; line-height: 1; }
 
-        #game-grid { display: grid; height: calc(100vh - 150px); margin: 0 auto; max-width: none; width: 95%; }
+        #game-grid { display: grid; height: calc(100vh - 130px); margin: 0 auto; max-width: none; width: 95%; }
 
         .game-tile {
             align-items: center; border-radius: 30px; box-shadow: 4px 4px 8px rgba(0,0,0,0.1), inset 4px 4px 8px rgba(255,255,255,0.3); cursor: pointer; display: flex; flex-direction: column;
@@ -201,15 +261,14 @@
         .game-tile.invisible { opacity: 0; pointer-events: none; transform: scale(0.8); visibility: hidden; }
         .game-tile.claimed { box-shadow: none !important; cursor: default; opacity: 1 !important; }
 
-        /* Pirate mode message box */
         #pirate-mode-message {
-            animation: popIn 0.3s ease-out; background: transparent; box-shadow: none; display: none; margin: 50px auto; padding: 40px; text-align: center; width: 80%;
+            animation: popIn 0.3s ease-out; background: transparent; box-shadow: none; display: none; margin: 40px auto; padding: 30px; text-align: center; width: 80%;
         }
         #pirate-mode-message h2 { color: var(--color-text-dark); font-size: 5rem; margin-bottom: 10px; text-shadow: 2px 2px 0px rgba(255,255,255,0.5); }
         #pirate-mode-message p { color: #333; font-size: 4rem; text-shadow: 1px 1px 0px rgba(255,255,255,0.5); }
 
         /* --- Racing Track --- */
-        .racing-wrapper { display: flex; flex-direction: column; gap: 15px; height: calc(100vh - 160px); width: 100%; padding: 0; }
+        .racing-wrapper { display: flex; flex-direction: column; gap: 15px; height: calc(100vh - 130px); width: 100%; padding: 0; }
         .racing-action-bar { align-items: center; background: #ffffff; border-radius: 30px; box-shadow: var(--shadow-clay-base); display: flex; justify-content: space-between; margin: 0 15px; padding: 15px 30px; width: calc(100% - 30px); }
         .racing-status-text { color: var(--color-text-dark); font-size: 2.2rem; font-weight: 800; }
 
@@ -251,21 +310,48 @@
 
         .car-container { align-items: center; display: flex; justify-content: center; position: absolute; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 10; }
 
-        /* --- Speed Match Solo Game Styles --- */
-        .speed-wrapper { display: flex; flex-direction: column; align-items: center; gap: 20px; height: calc(100vh - 160px); justify-content: center; width: 100%; max-width: 850px; margin: 0 auto; }
+        /* --- Speed Match Styles --- */
+        .speed-wrapper { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 18px; 
+            height: auto; 
+            min-height: calc(100vh - 130px); 
+            justify-content: center; 
+            width: 100%; 
+            max-width: 880px; 
+            margin: auto; 
+        }
         
         .speed-prompt-card {
             align-items: center; background: #ffffff; border-radius: 40px; box-shadow: var(--shadow-clay-base);
-            display: flex; flex-direction: column; justify-content: center; min-height: 180px; padding: 25px 40px; text-align: center; width: 100%;
+            display: flex; flex-direction: column; justify-content: center; min-height: 170px; padding: 25px 35px; text-align: center; width: 100%;
         }
-        .speed-prompt-word { color: var(--color-text-dark); font-size: 4rem; font-weight: 800; line-height: 1.2; }
+        .speed-prompt-word { 
+            color: var(--color-text-dark); 
+            font-size: 4.8rem;
+            font-weight: 800; 
+            line-height: 1.2; 
+            word-break: break-word;
+        }
 
-        .speed-options-grid { display: grid; gap: 15px; grid-template-columns: 1fr 1fr; width: 100%; }
+        .speed-options-grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; width: 100%; }
         .speed-option-btn {
-            background: #ffffff; border: 4px solid transparent; border-radius: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            color: var(--color-text-dark); font-family: var(--font-family-main); font-size: 2.2rem; font-weight: 800; min-height: 90px; padding: 15px 20px; 
+            background: #ffffff; 
+            border: 4px solid transparent; 
+            border-radius: 32px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            color: var(--color-text-dark); 
+            font-family: var(--font-family-main); 
+            font-size: 2.6rem;
+            font-weight: 800; 
+            min-height: 95px; 
+            padding: 16px 20px; 
             transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease;
             cursor: pointer;
+            word-break: break-word;
+            line-height: 1.2;
         }
         .speed-option-btn:active { transform: scale(0.97); }
         .speed-option-btn.speed-option-hidden {
@@ -274,12 +360,11 @@
             transition: none !important;
         }
 
-        /* Solo Summary Box */
-        .solo-summary-box { align-items: center; display: flex; flex-direction: column; gap: 20px; margin: auto 0; width: 100%; }
-        .solo-stat-row { display: flex; gap: 25px; justify-content: center; width: 100%; flex-wrap: wrap; }
-        .solo-stat-card { background: #ffffff; border-radius: 30px; box-shadow: var(--shadow-clay-base); padding: 25px 35px; text-align: center; min-width: 220px; }
-        .solo-stat-value { color: var(--color-accent-purple); font-size: 4.2rem; font-weight: 800; }
-        .solo-stat-label { color: #666; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; margin-top: 5px; }
+        .solo-summary-box { align-items: center; display: flex; flex-direction: column; gap: 20px; margin: auto; width: 100%; }
+        .solo-stat-row { display: flex; gap: 20px; justify-content: center; width: 100%; flex-wrap: wrap; }
+        .solo-stat-card { background: #ffffff; border-radius: 30px; box-shadow: var(--shadow-clay-base); padding: 20px 30px; text-align: center; min-width: 180px; }
+        .solo-stat-value { color: var(--color-accent-purple); font-size: 3.8rem; font-weight: 800; }
+        .solo-stat-label { color: #666; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; margin-top: 5px; }
 
         /* --- Modals --- */
         #modal-overlay { 
@@ -306,7 +391,6 @@
             position: relative; 
         }
         
-        /* Burning Fuse Timer Styles */
         .fuse-container { align-items: center; display: flex; gap: 15px; margin-bottom: 20px; width: 100%; }
         .fuse-label { color: var(--color-accent-red); font-size: 2.2rem; font-weight: 800; min-width: 75px; text-align: left; }
         .fuse-bar-wrapper { background: #2A2A2A; border-radius: 12px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.6); flex: 1; height: 18px; position: relative; overflow: visible; }
@@ -337,7 +421,6 @@
         .effect-card-title { font-size: 3rem; font-weight: 800; margin-bottom: 15px; color: var(--color-text-dark); }
         .effect-card-text { font-size: 2.2rem; font-weight: 600; margin-bottom: 25px; color: #555; line-height: 1.3; }
 
-        /* Cartoon Explosion Emoji Animation */
         .cartoon-boom-emoji {
             animation: cartoonExplodeEmoji 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             font-size: 7rem; pointer-events: none; position: fixed;
@@ -358,6 +441,26 @@
 
         .hidden { display: none !important; }
 
+        @media (max-width: 600px) {
+            h1 { font-size: 2.3rem; margin-bottom: 12px; }
+            .clay-container { padding: 15px 12px; border-radius: 28px; width: 95%; }
+            .button-mode-select { font-size: 1.5rem; min-height: 55px; }
+            .button-unit-select { font-size: 1.3rem; padding: 12px 18px; min-height: 48px; }
+            .game-header { padding: 4px 8px; gap: 6px; top: 8px; border-radius: 25px; width: 96%; }
+            .team-badge { min-width: 0; padding: 4px 6px; border-radius: 18px; max-width: none; }
+            .team-name { font-size: 1.1rem; }
+            .team-score { font-size: 1.6rem; }
+            #screen-gameplay { padding-top: 85px; }
+            
+            .speed-wrapper { gap: 14px; }
+            .speed-prompt-card { min-height: 130px; padding: 18px 20px; border-radius: 28px; }
+            .speed-prompt-word { font-size: 3.4rem; }
+            .speed-option-btn { font-size: 2.2rem; min-height: 78px; padding: 12px 14px; border-radius: 24px; }
+            
+            .modal-text-display { font-size: 3rem; }
+            .modal-content { padding: 20px 15px; border-radius: 30px; }
+        }
+
         @keyframes bounceIcon { 0%, 100% { transform: translateY(-50%); } 50% { transform: translateY(-65%); } }
         @keyframes wobbleDice { 0% { transform: rotate(-8deg) scale(1.05); } 100% { transform: rotate(8deg) scale(0.95); } }
         @keyframes pulseVictim { 0% { box-shadow: 0 0 0 0 rgba(255, 78, 50, 0.4); transform: scale(1); } 70% { box-shadow: 0 0 0 10px rgba(255, 78, 50, 0); transform: scale(1.05); } 100% { box-shadow: 0 0 0 0 rgba(255, 78, 50, 0); transform: scale(1); } }
@@ -372,130 +475,140 @@
 
     <!-- Intro Screen: Language Selection -->
     <div id="screen-lang-select" class="app-screen">
-        <h1>Select Language / Välj språk</h1>
-        <div class="clay-container">
-            <button class="clay-button button-mode-select" style="background: var(--color-accent-primary);" onclick="state.setLanguage('en')">
-                🇬🇧 English
-            </button>
-            <button class="clay-button button-mode-select" style="background: var(--color-accent-orange);" onclick="state.setLanguage('sv')">
-                🇸🇪 Svenska
-            </button>
+        <div class="screen-centered-wrapper">
+            <h1>Select Language / Välj språk</h1>
+            <div class="clay-container">
+                <button class="clay-button button-mode-select" style="background: var(--color-accent-primary);" onclick="state.setLanguage('en')">
+                    🇬🇧 English
+                </button>
+                <button class="clay-button button-mode-select" style="background: var(--color-accent-orange);" onclick="state.setLanguage('sv')">
+                    🇸🇪 Svenska
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Game Mode Selection -->
     <div id="screen-game-mode-select" class="app-screen">
-        <div class="clay-container">
-            <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--color-text-dark);" data-i18n="soloTitle">Solo</h2>
-            <button class="clay-button button-mode-select" style="background: var(--color-accent-purple);" onclick="state.setGameMode('speedmatch')" data-i18n="speedmatch">
-                ⚡ Speed Match
-            </button>
+        <div class="screen-centered-wrapper">
+            <div class="clay-container">
+                <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--color-text-dark);" data-i18n="soloTitle">Spela själv</h2>
+                <button class="clay-button button-mode-select" style="background: var(--color-accent-purple);" onclick="state.setGameMode('speedmatch')" data-i18n="speedmatch">
+                    ⚡ Speed Match
+                </button>
+            </div>
+            <div class="clay-container">
+                <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--color-text-dark);" data-i18n="groupTitle">Spela i lag</h2>
+                <button class="clay-button button-mode-select" style="background: var(--color-accent-primary);" onclick="state.setGameMode('jeopardy')" data-i18n="jeopardy">
+                    💰 Jeopardy
+                </button>
+                <button class="clay-button button-mode-select" style="background: var(--color-accent-green);" onclick="state.setGameMode('connect')" data-i18n="connect">
+                    🧩 Connect The Tiles
+                </button>
+                <button class="clay-button button-mode-select" style="background: var(--color-accent-orange);" onclick="state.setGameMode('racing')" data-i18n="racing">
+                    🏎️ Racing Track
+                </button>
+            </div>
+            <button class="clay-button" style="background: #666; margin-top: 10px;" onclick="gameUI.transitionTo('screen-lang-select')" data-i18n="changeLang">← Change Language</button>
         </div>
-        <div class="clay-container">
-            <h2 style="font-size: 2.2rem; margin-bottom: 10px; color: var(--color-text-dark);" data-i18n="groupTitle">Group</h2>
-            <button class="clay-button button-mode-select" style="background: var(--color-accent-primary);" onclick="state.setGameMode('jeopardy')" data-i18n="jeopardy">
-                💰 Jeopardy
-            </button>
-            <button class="clay-button button-mode-select" style="background: var(--color-accent-green);" onclick="state.setGameMode('connect')" data-i18n="connect">
-                🧩 Connect The Tiles
-            </button>
-            <button class="clay-button button-mode-select" style="background: var(--color-accent-orange);" onclick="state.setGameMode('racing')" data-i18n="racing">
-                🏎️ Racing Track
-            </button>
-        </div>
-        <button class="clay-button" style="background: #666; margin-top: 10px;" onclick="gameUI.transitionTo('screen-lang-select')" data-i18n="changeLang">← Change Language</button>
     </div>
 
     <!-- Screen: Unit Selection -->
     <div id="screen-unit-selection" class="app-screen">
         <h1 id="unit-selection-title">Select Unit</h1>
         <div id="unit-sections-container" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
-        <button class="clay-button" style="background: #666; margin-top: 10px;" onclick="gameUI.transitionTo('screen-game-mode-select')" data-i18n="changeGame">← Change Game</button>
+        <button class="clay-button" style="background: #666; margin-top: 15px;" onclick="gameUI.transitionTo('screen-game-mode-select')" data-i18n="changeGame">← Change Game</button>
     </div>
 
     <!-- Screen: Grid Size (Jeopardy mode only) -->
     <div id="screen-grid-size" class="app-screen">
-        <h1 data-i18n="howManyQuestions">How many questions?</h1>
-        <div class="clay-container">
-            <div class="size-selection-row">
-                <button class="clay-button" style="background: var(--color-accent-orange);" onclick="state.setGridSize(12)" data-i18n="tiles12">12 Tiles</button>
-                <button class="clay-button" style="background: var(--color-accent-green);" onclick="state.setGridSize(21)" data-i18n="tiles21">21 Tiles</button>
-                <button class="clay-button" style="background: var(--color-accent-primary);" onclick="state.setGridSize(30)" data-i18n="tiles30">30 Tiles</button>
+        <div class="screen-centered-wrapper">
+            <h1 data-i18n="howManyQuestions">How many questions?</h1>
+            <div class="clay-container">
+                <div class="size-selection-row">
+                    <button class="clay-button" style="background: var(--color-accent-orange);" onclick="state.setGridSize(12)" data-i18n="tiles12">12 Tiles</button>
+                    <button class="clay-button" style="background: var(--color-accent-green);" onclick="state.setGridSize(21)" data-i18n="tiles21">21 Tiles</button>
+                    <button class="clay-button" style="background: var(--color-accent-primary);" onclick="state.setGridSize(30)" data-i18n="tiles30">30 Tiles</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Screen: Team Setup -->
     <div id="screen-team-setup" class="app-screen">
-        <h1 data-i18n="howManyTeams">How many teams?</h1>
-        <div class="clay-container">
-            <div class="team-config-wrapper">
-                <div class="team-count-row" id="team-count-buttons"></div>
-                <div id="team-inputs-list"></div>
-                <button class="clay-button" style="background: var(--color-text-dark); width: 100%; margin: 10px 0 0 0;" onclick="gameUI.startGameSetup()" data-i18n="startGame">Start Game</button>
+        <div class="screen-centered-wrapper">
+            <h1 data-i18n="howManyTeams">How many teams?</h1>
+            <div class="clay-container">
+                <div class="team-config-wrapper">
+                    <div class="team-count-row" id="team-count-buttons"></div>
+                    <div id="team-inputs-list"></div>
+                    <button class="clay-button" style="background: var(--color-text-dark); width: 100%; margin: 10px 0 0 0;" onclick="gameUI.startGameSetup()" data-i18n="startGame">Start Game</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Screen: Tutorial (Jeopardy mode) -->
     <div id="screen-tutorial" class="app-screen">
-        <h1 data-i18n="jeopardyRulesTitle">Effect tutorial</h1>
-        <div class="clay-container">
-            <div class="tutorial-grid">
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">🚀</span>
-                    <p><strong data-i18n="rocketTitle">Rocket</strong><br><span data-i18n="rocketDesc">A correct answer launches you straight into 1st place!</span></p>
+        <div class="screen-centered-wrapper">
+            <h1 data-i18n="jeopardyRulesTitle">Effect tutorial</h1>
+            <div class="clay-container">
+                <div class="tutorial-grid">
+                    <div class="tutorial-card">
+                        <span class="tutorial-icon">🚀</span>
+                        <p><strong data-i18n="rocketTitle">Rocket</strong><br><span data-i18n="rocketDesc">A correct answer launches you straight into 1st place!</span></p>
+                    </div>
+                    <div class="tutorial-card">
+                        <span class="tutorial-icon">🏴‍☠️</span>
+                        <p><strong data-i18n="pirateTitle">Pirate</strong><br><span data-i18n="pirateDesc">Steal 50% on correct answer, or give away 50% on wrong answer!</span></p>
+                    </div>
+                    <div class="tutorial-card">
+                        <span class="tutorial-icon">🍀</span>
+                        <p><strong data-i18n="cloverTitle">Clover</strong><br><span data-i18n="cloverDesc">Earn double points for a correct answer!</span></p>
+                    </div>
+                    <div class="tutorial-card">
+                        <span class="tutorial-icon">⚡</span>
+                        <p><strong data-i18n="lightningTitle">Lightning</strong><br><span data-i18n="lightningDesc">A correct answer grants you an immediate extra turn!</span></p>
+                    </div>
                 </div>
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">🏴‍☠️</span>
-                    <p><strong data-i18n="pirateTitle">Pirate</strong><br><span data-i18n="pirateDesc">Steal 50% on correct answer, or give away 50% on wrong answer!</span></p>
-                </div>
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">🍀</span>
-                    <p><strong data-i18n="cloverTitle">Clover</strong><br><span data-i18n="cloverDesc">Earn double points for a correct answer!</span></p>
-                </div>
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">⚡</span>
-                    <p><strong data-i18n="lightningTitle">Lightning</strong><br><span data-i18n="lightningDesc">A correct answer grants you an immediate extra turn!</span></p>
-                </div>
+                <p style="text-align: center; margin-top: 10px; font-size: 2rem;" data-i18n="jeopardyRulesFooter"><strong>400 & 600 point tiles have timed fuses! Answer before time runs out or the tile explodes!</strong></p>
+                <button class="clay-button button-unit-select" style="width: 100%; background: var(--color-accent-green);" onclick="gameUI.launchGame()" data-i18n="letsPlay">Let's play!</button>
             </div>
-            <p style="text-align: center; margin-top: 10px; font-size: 2rem;" data-i18n="jeopardyRulesFooter"><strong>400 & 600 point tiles have timed fuses! Answer before time runs out or the tile explodes!</strong></p>
-            <button class="clay-button button-unit-select" style="width: 100%; background: var(--color-accent-green);" onclick="gameUI.launchGame()" data-i18n="letsPlay">Let's play!</button>
         </div>
     </div>
 
     <!-- Screen: Tutorial (Connect The Tiles mode) -->
     <div id="screen-connect-tutorial" class="app-screen">
-        <h1 data-i18n="gameRulesTitle">Game rules</h1>
-        <div class="clay-container">
-            <p id="connect-tutorial-text" style="text-align: center; font-size: 2.2rem; font-weight: 600; margin: 25px 0; line-height: 1.4; color: var(--color-text-dark);"></p>
-            <button class="clay-button button-unit-select" style="width: 100%; background: var(--color-accent-green);" onclick="gameUI.launchGame()" data-i18n="letsPlay">Let's play!</button>
+        <div class="screen-centered-wrapper">
+            <h1 data-i18n="gameRulesTitle">Game rules</h1>
+            <div class="clay-container">
+                <p id="connect-tutorial-text" style="text-align: center; font-size: 2.2rem; font-weight: 600; margin: 25px 0; line-height: 1.4; color: var(--color-text-dark);"></p>
+                <button class="clay-button button-unit-select" style="width: 100%; background: var(--color-accent-green);" onclick="gameUI.launchGame()" data-i18n="letsPlay">Let's play!</button>
+            </div>
         </div>
     </div>
 
     <!-- Screen: Tutorial (Racing Track mode) -->
     <div id="screen-racing-tutorial" class="app-screen">
-        <h1 data-i18n="racingRulesTitle">Racing Track Rules</h1>
-        <div class="clay-container">
-            <div class="tutorial-grid">
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">🎲</span>
-                    <p><strong data-i18n="rollMoveTitle">Roll & Move</strong><br><span data-i18n="rollMoveDesc">Answer correctly to roll the dice and speed forward!</span></p>
+        <div class="screen-centered-wrapper">
+            <h1 data-i18n="racingRulesTitle">Racing Track Rules</h1>
+            <div class="clay-container">
+                <div class="tutorial-grid">
+                    <div class="tutorial-card">
+                        <span class="tutorial-icon">🎲</span>
+                        <p><strong data-i18n="rollMoveTitle">Roll & Move</strong><br><span data-i18n="rollMoveDesc">Answer correctly to roll the dice and speed forward!</span></p>
+                    </div>
+                    <div class="tutorial-card">
+                        <span class="tutorial-icon">🚧</span>
+                        <p><strong data-i18n="breakdownTitle">Breakdown Trap</strong><br><span data-i18n="breakdownDesc">Breaks your car down so you must skip your next turn!</span></p>
+                    </div>
+                    <div class="tutorial-card">
+                        <span class="tutorial-icon">⚡</span>
+                        <p><strong data-i18n="doubleBoostTitle">Double Boost</strong><br><span data-i18n="doubleBoostDesc">Doubles your next turn's dice roll if your answer is correct!</span></p>
+                    </div>
                 </div>
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">🚧</span>
-                    <p><strong data-i18n="breakdownTitle">Breakdown Trap</strong><br><span data-i18n="breakdownDesc">Breaks your car down so you must skip your next turn!</span></p>
-                </div>
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">⛽</span>
-                    <p><strong data-i18n="secondShotTitle">Second Shot</strong><br><span data-i18n="secondShotDesc">Instantly gives your team another translation turn & dice throw!</span></p>
-                </div>
-                <div class="tutorial-card">
-                    <span class="tutorial-icon">⚡</span>
-                    <p><strong data-i18n="doubleBoostTitle">Double Boost</strong><br><span data-i18n="doubleBoostDesc">Doubles your next turn's dice roll if your answer is correct!</span></p>
-                </div>
+                <button class="clay-button button-unit-select" style="width: 100%; background: var(--color-accent-green); margin-top: 15px;" onclick="gameUI.launchGame()" data-i18n="startRace">Start the Race!</button>
             </div>
-            <button class="clay-button button-unit-select" style="width: 100%; background: var(--color-accent-green); margin-top: 15px;" onclick="gameUI.launchGame()" data-i18n="startRace">Start the Race!</button>
         </div>
     </div>
 
@@ -600,8 +713,6 @@
                 rollMoveDesc: "Answer correctly to roll the dice and speed forward!",
                 breakdownTitle: "Breakdown Trap",
                 breakdownDesc: "Breaks your car down so you must skip your next turn!",
-                secondShotTitle: "Second Shot",
-                secondShotDesc: "Instantly gives your team another translation turn & dice throw!",
                 doubleBoostTitle: "Double Boost",
                 doubleBoostDesc: "Doubles your next turn's dice roll if your answer is correct!",
                 startRace: "Start the Race!",
@@ -645,11 +756,8 @@
                 championMsg: "{team} crossed the finish line and won the race!",
                 breakdownTrapTitle: "🚧 BREAKDOWN TRAP!",
                 breakdownTrapMsg: "{team} landed on a Breakdown Trap! Your car broke down so you must skip your next turn!",
-                secondShotLandTitle: "⛽ SECOND SHOT!",
-                secondShotLandMsg: "{team} landed on Second Shot! You get an immediate extra turn!",
                 doubleBoostLandTitle: "⚡ DOUBLE BOOST!",
                 doubleBoostLandMsg: "{team} landed on Double Boost! If your answer is correct next turn, your roll will be doubled!",
-                slotText: "Slot {n}",
                 scoreHeader: "SCORE",
                 comboHeader: "COMBO",
                 timeHeader: "TIME",
@@ -661,63 +769,61 @@
                 }
             },
             sv: {
-                soloTitle: "Enskild",
-                groupTitle: "Grupp",
+                soloTitle: "Spela själv",
+                groupTitle: "Spela i lag",
                 jeopardy: "💰 Jeopardy",
-                connect: "🧩 Koppla brickorna",
-                racing: "🏎️ Racerbana",
+                connect: "🧩 Koppla ihop",
+                racing: "🏎️ Racet",
                 speedmatch: "⚡ Snabbmatch",
                 selectUnitTitle: "{mode}: Välj kapitel",
                 changeGame: "← Byt spel",
                 changeLang: "← Byt språk",
                 howManyQuestions: "Hur många frågor?",
-                tiles12: "12 brickor",
-                tiles21: "21 brickor",
-                tiles30: "30 brickor",
+                tiles12: "12 frågor",
+                tiles21: "21 frågor",
+                tiles30: "30 frågor",
                 howManyTeams: "Hur många lag?",
                 startGame: "Starta spelet",
                 teamPlaceholder: "Lag {n}",
-                jeopardyRulesTitle: "Effektguide",
+                jeopardyRulesTitle: "Specialkort & Regler",
                 rocketTitle: "Raket",
-                rocketDesc: "Rätt svar skjuter dig direkt upp till 1:a plats!",
+                rocketDesc: "Svara rätt och flyg direkt till 1:a plats!",
                 pirateTitle: "Pirat",
-                pirateDesc: "Stjäl 50% vid rätt svar, eller ge bort 50% vid fel svar!",
-                cloverTitle: "Klöver",
-                cloverDesc: "Få dubbla poäng vid rätt svar!",
+                pirateDesc: "Rätt svar = stjäl 50% av poängen! Fel svar = ge bort 50%!",
+                cloverTitle: "Fyrklöver",
+                cloverDesc: "Få dubbla poäng om du svarar rätt!",
                 lightningTitle: "Blixt",
-                lightningDesc: "Rätt svar ger dig en extra tur direkt!",
-                jeopardyRulesFooter: "400- & 600-poängsbrickor har en tänd stubin! Svara innan tiden tar slut annars exploderar brickan!",
-                letsPlay: "Nu spelar vi!",
+                lightningDesc: "Svara rätt så får du en extra tur direkt!",
+                jeopardyRulesFooter: "400 & 600 poäng har en tickande bomb! Svara snabbt innan tiden tar slut!",
+                letsPlay: "Nu kör vi!",
                 gameRulesTitle: "Spelregler",
-                connectRulesText: "Välj en bricka och gör rätt översättning för att ta den. Koppla ihop {req} brickor i vilken riktning som helst för att vinna!",
-                racingRulesTitle: "Regler för Racerbanan",
-                rollMoveTitle: "Slå & Flytta",
-                rollMoveDesc: "Svara rätt för att slå tärningen och rusa framåt!",
-                breakdownTitle: "Motorstoppsfälla",
-                breakdownDesc: "Gör så att din bil går sönder så du måste stå över nästa tur!",
-                secondShotTitle: "Extrachans",
-                secondShotDesc: "Ger ditt lag en ny översättningstur & tärningskast direkt!",
-                doubleBoostTitle: "Dubbelboost",
-                doubleBoostDesc: "Dubblerar nästa turs tärningskast om ditt svar är rätt!",
+                connectRulesText: "Välj en ruta och översätt ordet rätt. Få {req} rutor i rad för att vinna!",
+                racingRulesTitle: "Regler för Racet",
+                rollMoveTitle: "Slå tärning & Kör",
+                rollMoveDesc: "Svara rätt på ordet för att slå tärningen och köra framåt!",
+                breakdownTitle: "Motorstopp",
+                breakdownDesc: "Bilen går sönder! Du måste stå över nästa tur.",
+                doubleBoostTitle: "Dubbel boost",
+                doubleBoostDesc: "Om du svarar rätt nästa gång får du dubbla steg med tärningen!",
                 startRace: "Starta racet!",
                 speedRulesTitle: "Regler för Snabbmatch",
-                blitzTitle: "60-sekunders blitz",
-                blitzDesc: "Koppla så många ordpar som möjligt innan tiden tar slut!",
-                streakTitle: "Svit-combo",
-                streakDesc: "Bygg upp sviter för att tjäna enorma bonuspoäng-multiplikatorer!",
-                reviewTitle: "Smart repetition",
-                reviewDesc: "Ord du missar hamnar sist i kön så att du lär dig alla ord ordentligt!",
-                startSolo: "Börja plugga!",
-                pirateStealHeader: "🏴‍☠️ Arrr! Stjäl poäng! 🏴‍☠️",
-                pirateStealText: "Vilket lag ska förlora hälften av sina poäng till dig?",
-                pirateGiveHeader: "🏴‍☠️ Arrr! Piratstraff! 🏴‍☠️",
-                pirateGiveText: "Vilket lag ska få hälften av dina poäng?",
+                blitzTitle: "60 sekunder",
+                blitzDesc: "Hitta så många rätta ordpar du hinner på 60 sekunder!",
+                streakTitle: "Kombobonus",
+                streakDesc: "Svara rätt flera gånger i rad för att få massor av extrapoäng!",
+                reviewTitle: "Träna mer",
+                reviewDesc: "Ord du svarar fel på kommer igen så att du lär dig dem!",
+                startSolo: "Börja spela!",
+                pirateStealHeader: "🏴‍☠️ Stjäl poäng! 🏴‍☠️",
+                pirateStealText: "Välj ett lag att ta hälften av poängen från:",
+                pirateGiveHeader: "🏴‍☠️ Piratstraff! 🏴‍☠️",
+                pirateGiveText: "Välj ett lag som får hälften av dina poäng:",
                 playAgain: "Spela igen",
-                winnerTitle: "Grattis till segern!",
-                soloCompleteTitle: "Enskild träning klar!",
-                finalScore: "Slutpoäng",
-                accuracy: "Noggrannhet",
-                maxStreak: "Maximal svit",
+                winnerTitle: "Grattis till vinsten!",
+                soloCompleteTitle: "Bra jobbat!",
+                finalScore: "Poäng",
+                accuracy: "Rätt svar",
+                maxStreak: "Bästa svit",
                 showAnswer: "Visa svar",
                 wrong: "Fel",
                 correct: "Rätt",
@@ -726,33 +832,30 @@
                 translateToFi: "Översätt till finska",
                 translateToEn: "Översätt till engelska",
                 translateToSv: "Översätt till svenska",
-                doubleBoostActive: "⚡ DUBBELBOOST AKTIV! Rätt svar dubblerar ditt tärningskast!",
+                doubleBoostActive: "⚡ DUBBEL BOOST! Svara rätt för att få dubbla steg!",
                 correctRollDice: "🎲 Rätt svar! Slå tärningen!",
                 incorrectTitle: "❌ FEL",
-                incorrectCarStays: "{team} översatte fel. Er bil står kvar!",
-                turnSkippedTitle: "🚧 TUR ÖVERSTÅDD",
-                turnSkippedMsg: "{team} reparerade sin bil och stod över denna tur.",
+                incorrectCarStays: "{team} svarade fel. Bilen står kvar!",
+                turnSkippedTitle: "🚧 STÅR ÖVER",
+                turnSkippedMsg: "{team} lagade bilen och stod över turen.",
                 hasBrokenDown: "har motorstopp!",
                 sTurn: "s tur",
-                skipTurnBtn: "Stå över tur 🚧",
+                skipTurnBtn: "Stå över 🚧",
                 translateWordBtn: "Översätt ord",
-                championTitle: "🏆 MÄSTARE!",
-                championMsg: "{team} korsade mållinjen och vann racet!",
-                breakdownTrapTitle: "🚧 MOTORSTOPPSFÄLLA!",
-                breakdownTrapMsg: "{team} hamnade på en Motorstoppsfälla! Bilen gick sönder så ni måste stå över nästa tur!",
-                secondShotLandTitle: "⛽ EXTRACHANS!",
-                secondShotLandMsg: "{team} hamnade på Extrachans! Ni får en extra tur direkt!",
-                doubleBoostLandTitle: "⚡ DUBBELBOOST!",
-                doubleBoostLandMsg: "{team} hamnade på Dubbelboost! Om ert svar är rätt nästa tur dubbleras kastet!",
-                slotText: "Ruta {n}",
+                championTitle: "🏆 VINNARE!",
+                championMsg: "{team} kom först i mål och vann racet!",
+                breakdownTrapTitle: "🚧 MOTORSTOPP!",
+                breakdownTrapMsg: "{team} fick motorstopp! Ni måste stå över nästa tur.",
+                doubleBoostLandTitle: "⚡ DUBBEL BOOST!",
+                doubleBoostLandMsg: "{team} fick Dubbel Boost! Om ni svarar rätt nästa gång får ni dubbla steg!",
                 scoreHeader: "POÄNG",
-                comboHeader: "COMBO",
+                comboHeader: "KOMBO",
                 timeHeader: "TID",
                 effects: {
-                    rocket: "Du hittade en raket! Rätt svar tar dig till första plats.",
-                    pirate: "Du träffade en pirat! Rätt svar = stjäl 50% från ett annat lag. Fel svar = ge bort 50% av dina poäng!",
-                    clover: "Tur! Dubbla poäng för rätt svar!",
-                    lightning: "Rätt svar = extra tur!"
+                    rocket: "Du hittade en raket! Rätt svar tar dig direkt till 1:a plats.",
+                    pirate: "Pirat! Rätt svar = stjäl 50% från ett annat lag. Fel svar = ge bort 50%!",
+                    clover: "Turklöver! Dubbla poäng om du svarar rätt!",
+                    lightning: "Blixt! Rätt svar ger dig en extra tur!"
                 }
             }
         };
@@ -886,13 +989,22 @@
             },
             showScreen(element) {
                 if (!element) return;
-                window.scrollTo(0, 0);
+                
                 element.style.display = 'flex';
                 
-                // Force layout reflow so the browser registers the inactive state before animating in
+                element.scrollTop = 0;
+                if (element.scrollTo) {
+                    element.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                }
+                window.scrollTo(0, 0);
+                
                 void element.offsetWidth;
                 
                 requestAnimationFrame(() => {
+                    element.scrollTop = 0;
+                    if (element.scrollTo) {
+                        element.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                    }
                     element.classList.add('active');
                 });
             },
@@ -942,7 +1054,7 @@
                         const color = colors[bIdx % colors.length];
                         const clay = document.createElement('div');
                         clay.className = 'clay-container';
-                        clay.style.padding = '15px 20px';
+                        clay.style.padding = '18px 24px';
 
                         const sec = document.createElement('div');
                         sec.className = 'unit-section';
@@ -950,9 +1062,9 @@
 
                         const h3 = document.createElement('h3');
                         h3.innerText = `Trampolin ${book}`;
-                        h3.style.fontSize = '2.2rem';
+                        h3.style.fontSize = '2.4rem';
                         h3.style.color = 'var(--color-text-dark)';
-                        h3.style.marginBottom = '12px';
+                        h3.style.marginBottom = '14px';
                         sec.appendChild(h3);
 
                         const columnsWrapper = document.createElement('div');
@@ -972,23 +1084,25 @@
                             const subLabel = document.createElement('div');
                             subLabel.innerText = subCat;
                             subLabel.style.fontWeight = '700';
-                            subLabel.style.fontSize = '1.5rem';
+                            subLabel.style.fontSize = '1.7rem';
                             subLabel.style.color = '#555';
-                            subLabel.style.marginBottom = '6px';
+                            subLabel.style.marginBottom = '8px';
                             col.appendChild(subLabel);
 
                             const btnRow = document.createElement('div');
                             btnRow.className = 'unit-row';
                             btnRow.style.display = 'flex';
-                            btnRow.style.gap = '6px';
+                            btnRow.style.gap = '8px';
 
                             for (let c = 1; c <= 4; c++) {
                                 const btn = document.createElement('button');
                                 btn.className = 'clay-button button-unit-select';
                                 btn.innerText = c;
                                 btn.style.background = color;
-                                btn.style.minWidth = '45px';
-                                btn.style.padding = '8px 15px';
+                                btn.style.minWidth = '58px';
+                                btn.style.minHeight = '52px';
+                                btn.style.fontSize = '1.8rem';
+                                btn.style.padding = '10px 18px';
                                 btn.onclick = () => this.loadUnit(`trampolin${book}${subCat.toLowerCase()}${c}.json`);
                                 btnRow.appendChild(btn);
                             }
@@ -1023,7 +1137,6 @@
                 }
             },
             generateTeamInputs(n) {
-                // Highlight active count button
                 document.querySelectorAll('.button-team-count').forEach(btn => {
                     const count = parseInt(btn.innerText);
                     if (count === n) {
@@ -1037,9 +1150,8 @@
 
                 const container = document.getElementById('team-inputs-list');
                 const currentCount = container.children.length;
-                if (currentCount === n) return; // Non-destructive: avoid DOM thrashing if count didn't change
+                if (currentCount === n) return;
 
-                // Adjust inputs smoothly without destroying existing values
                 while (container.children.length > n) {
                     container.removeChild(container.lastChild);
                 }
@@ -1135,8 +1247,12 @@
                 if (state.gameMode === 'speedmatch') {
                     grid.style.display = 'flex';
                     grid.style.flexDirection = 'column';
-                    grid.style.height = 'calc(100vh - 160px)';
+                    grid.style.alignItems = 'center';
+                    grid.style.justifyContent = 'center';
+                    grid.style.height = 'auto';
+                    grid.style.minHeight = 'calc(100vh - 130px)';
                     grid.style.width = '100%';
+                    grid.style.margin = '0 auto';
 
                     if (state.speedState.queue.length === 0 || state.speedState.timeLeft <= 0) {
                         gameLogic.endSpeedMatch();
@@ -1181,7 +1297,7 @@
                 if (state.gameMode === 'racing') {
                     grid.style.display = 'flex';
                     grid.style.flexDirection = 'column';
-                    grid.style.height = 'calc(100vh - 160px)';
+                    grid.style.height = 'calc(100vh - 130px)';
                     grid.style.width = '100%';
 
                     const currentTeam = state.teams[state.currentTeamIdx];
@@ -1275,10 +1391,11 @@
                             const teamItems = state.racingState.trackItems[tIdx] || {};
                             const item = teamItems[s];
 
+                            // Only Breakdown (🚧) and Double Boost (⚡)
                             if (item && s !== 0 && s !== totalSlots) {
                                 const icon = document.createElement('span');
                                 icon.className = 'slot-powerup-icon';
-                                icon.innerText = item === 'breakdown' ? '🚧' : item === 'second_shot' ? '⛽' : '⚡';
+                                icon.innerText = item === 'breakdown' ? '🚧' : '⚡';
                                 slot.appendChild(icon);
                             }
 
@@ -1416,8 +1533,7 @@
                     
                     let scoreDisplay = team.score;
                     if (state.gameMode === 'racing') {
-                        const pos = state.racingState.positions[idx] || 0;
-                        scoreDisplay = t('slotText', { n: pos });
+                        scoreDisplay = state.racingState.positions[idx] || 0;
                     }
 
                     div.innerHTML = `
@@ -1536,17 +1652,28 @@
                 state.racingState.doubleNext = new Array(numTeams).fill(false);
                 state.racingState.isAnimating = false;
                 
-                state.racingState.trackItems = state.teams.map(() => ({}));
+                const pickRandom = (arr, count) => {
+                    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+                    return shuffled.slice(0, count);
+                };
 
-                const items = ['breakdown', 'second_shot', 'double_dice'];
-                for (let s = 2; s < state.racingState.totalSlots; s++) {
-                    if (Math.random() < 0.35) {
-                        const item = items[Math.floor(Math.random() * items.length)];
-                        state.teams.forEach((_, tIdx) => {
-                            state.racingState.trackItems[tIdx][s] = item;
-                        });
-                    }
-                }
+                state.racingState.trackItems = state.teams.map(() => {
+                    const laneItems = {};
+
+                    // 2 point boost power-ups in the first 7 tiles (slots 1-7)
+                    const boostSlots = pickRandom([1, 2, 3, 4, 5, 6, 7], 2);
+                    boostSlots.forEach(slot => {
+                        laneItems[slot] = 'double_dice';
+                    });
+
+                    // 2 car breakdown traps in the last 7 tiles (slots 8-14)
+                    const trapSlots = pickRandom([8, 9, 10, 11, 12, 13, 14], 2);
+                    trapSlots.forEach(slot => {
+                        laneItems[slot] = 'breakdown';
+                    });
+
+                    return laneItems;
+                });
             },
             startRacingTurn() {
                 if (state.racingState.isAnimating) return;
@@ -1845,12 +1972,6 @@
                     state.racingState.broken[teamIdx] = true;
                     gameUI.showEffectCard(t('breakdownTrapTitle'), t('breakdownTrapMsg', { team: team.name }), () => {
                         state.currentTeamIdx = nextTurnTeamIdx;
-                        state.racingState.isAnimating = false;
-                        gameUI.renderGrid();
-                        gameUI.updateScoreboard();
-                    });
-                } else if (item === 'second_shot') {
-                    gameUI.showEffectCard(t('secondShotLandTitle'), t('secondShotLandMsg', { team: team.name }), () => {
                         state.racingState.isAnimating = false;
                         gameUI.renderGrid();
                         gameUI.updateScoreboard();
@@ -2217,7 +2338,7 @@
                     let scoreDisplay = team.score;
                     if (state.gameMode === 'racing') {
                         const teamIdx = state.teams.indexOf(team);
-                        scoreDisplay = t('slotText', { n: state.racingState.positions[teamIdx] });
+                        scoreDisplay = state.racingState.positions[teamIdx] || 0;
                     }
 
                     wrapper.innerHTML = `
